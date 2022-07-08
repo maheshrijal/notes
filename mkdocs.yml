@@ -1,0 +1,62 @@
+site_name: Maheshrjl's code snippets
+site_url: https://snippets.maheshrjl.com/
+site_author: Mahesh Rijal
+repo_url: https://github.com/maheshrjl/snippets.maheshrjl.com
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  font:
+    text: Roboto
+    code: Fira Code
+  language: en
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - navigation.top
+
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      toggle:
+        icon: material/weather-night
+        name: Dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      toggle:
+        icon: material/weather-sunny
+        name: Light mode
+
+plugins:
+  - search
+
+extra:
+  generator: false
+  # social:
+  #   - icon: fontawesome/brands/twitter
+  #     link: https://twitter.com/maheshrjl
+
+  #   - icon: fontawesome/solid/paper-plane
+  #     link: mailto:mhs@maheshrjl.com
+
+  #   - type: 'github'
+  #     link: 'https://github.com/maheshrjl'
+
+nav:
+  - Home: "index.md"
+  - Ansible: "ansible.md"
+  - AWS: "aws.md"
+  - Docker: "docker.md"
+  - Linux: "linux.md"
+  - Terraform: "terraform.md"
