@@ -1,2 +1,3 @@
-# snippets.maheshrjl.com
-Useful code snippets for everything DevOps &amp; Cloud
+## Maheshrjl's snippets [DEV]-> snippets.maheshrjl.com
+
+### Powered by MkDocs!
