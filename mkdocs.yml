@@ -1,7 +1,8 @@
-site_name: Maheshrjl's code snippets
+site_name: Maheshrjl's snippets
 site_url: https://snippets.maheshrjl.com/
 site_author: Mahesh Rijal
 repo_url: https://github.com/maheshrjl/snippets.maheshrjl.com
+repo_name: maheshrjl/snippets
 edit_uri: edit/main/docs/
 
 theme:
@@ -9,12 +10,14 @@ theme:
   font:
     text: Roboto
     code: Fira Code
+  icon:
+    repo: fontawesome/brands/github
   language: en
   features:
-    - navigation.instant
-    - navigation.tracking
-    - navigation.tabs
-    - navigation.tabs.sticky
+    - navigation.instant #  clicks on all internal links will be intercepted and dispatched via XHR without fully reloading the page
+    - navigation.tracking # URL in the address bar is automatically updated with the active anchor as highlighted in the table of contents
+    - navigation.tabs # When tabs are enabled, top-level sections are rendered in a menu layer below the header for viewports above 1220px, but remain as-is on mobile.
+    - navigation.tabs.sticky # , navigation tabs will lock below the header and always remain visible when scrolling down.
     - navigation.indexes
     - toc.follow
     - search.suggest
@@ -55,8 +58,39 @@ extra:
 
 nav:
   - Home: "index.md"
-  - Ansible: "ansible.md"
-  - AWS: "aws.md"
-  - Docker: "docker.md"
-  - Linux: "linux.md"
+  - Ansible: 
+    - AdHoc Commands: "ansible/ad-hoc.md"
+    - Playbook Execution: "ansible/playbook.md"
+    - Background Jobs: "ansible/background.md"
+
+  - AWS: 
+    - EC2: "aws/ec2.md"
+    - S2: "aws/s3.md"
+    - IAM: "aws/iam.md"
+
+  - Docker: 
+    - Docker Info: "docker/docker-info.md"
+    - Container Management: "docker/container-management.md"
+    - Images: "docker/images.md"
+    - Cleanup: "docker/cleanup.md"
+    - Orchestration: "docker/orchestration.md"
+
+  - Linux:
+    - Bash Shell: "linux/bash.md"
+    - Finding Text: "linux/find.md"
+    - Files & Dirs: "linux/files-dirs.md"
+    - Processes: "linux/processes.md"
+    - VI: "linux/vi.md"
+
   - Terraform: "terraform.md"
+
+markdown_extensions:
+  - admonition
+  - tables
+  - meta
+  - toc:
+      permalink: true
+      title: On this page
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences 
