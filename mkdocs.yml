@@ -19,7 +19,9 @@ theme:
     - navigation.tabs # When tabs are enabled, top-level sections are rendered in a menu layer below the header for viewports above 1220px, but remain as-is on mobile.
     - navigation.tabs.sticky # , navigation tabs will lock below the header and always remain visible when scrolling down.
     - navigation.indexes
+    - navigation.expand
     - toc.follow
+    # - toc.integrate # Show TOC on the left panel along with sections
     - search.suggest
     - search.highlight
     - navigation.top
@@ -57,32 +59,32 @@ extra:
   #     link: 'https://github.com/maheshrjl'
 
 nav:
-  - Home: "index.md"
-  - Ansible: 
-    - AdHoc Commands: "ansible/ad-hoc.md"
-    - Playbook Execution: "ansible/playbook.md"
-    - Background Jobs: "ansible/background.md"
+  # - Home: "index.md"
+  # - Ansible: 
+  #   - AdHoc Commands: "ansible/ad-hoc.md"
+  #   - Playbook Execution: "ansible/playbook.md"
+  #   - Background Jobs: "ansible/background.md"
 
-  - AWS: 
-    - EC2: "aws/ec2.md"
-    - S2: "aws/s3.md"
-    - IAM: "aws/iam.md"
+  # - AWS: 
+  #   - EC2: "aws/ec2.md"
+  #   - S2: "aws/s3.md"
+  #   - IAM: "aws/iam.md"
 
   - Docker: 
     - Docker Info: "docker/docker-info.md"
     - Container Management: "docker/container-management.md"
-    - Images: "docker/images.md"
-    - Cleanup: "docker/cleanup.md"
-    - Orchestration: "docker/orchestration.md"
+    # - Images: "docker/images.md"
+    # - Cleanup: "docker/cleanup.md"
+    # - Orchestration: "docker/orchestration.md"
 
-  - Linux:
-    - Bash Shell: "linux/bash.md"
-    - Finding Text: "linux/find.md"
-    - Files & Dirs: "linux/files-dirs.md"
-    - Processes: "linux/processes.md"
-    - VI: "linux/vi.md"
+  # - Linux:
+  #   - Bash Shell: "linux/bash.md"
+  #   - Finding Text: "linux/find.md"
+  #   - Files & Dirs: "linux/files-dirs.md"
+  #   - Processes: "linux/processes.md"
+  #   - VI: "linux/vi.md"
 
-  - Terraform: "terraform.md"
+  # - Terraform: "terraform.md"
 
 markdown_extensions:
   - admonition
