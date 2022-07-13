@@ -6,4 +6,4 @@ hide:
 # Welcome to maheshrjl's docs
 
 
-### This is WIP! 
+### This is Work in Progress! 
