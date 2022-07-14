@@ -73,16 +73,17 @@ nav:
   - Docker: 
     - Docker Info: "docker/docker-info.md"
     - Container Management: "docker/container-management.md"
+    - Networking: "docker/networking.md"
     # - Images: "docker/images.md"
     # - Cleanup: "docker/cleanup.md"
     # - Orchestration: "docker/orchestration.md"
 
-  # - Linux:
+  - Linux:
   #   - Bash Shell: "linux/bash.md"
   #   - Finding Text: "linux/find.md"
   #   - Files & Dirs: "linux/files-dirs.md"
   #   - Processes: "linux/processes.md"
-  #   - VI: "linux/vi.md"
+    - VI: "linux/vi.md"
 
   # - Terraform: "terraform.md"
 
@@ -95,4 +96,9 @@ markdown_extensions:
       title: On this page
   - pymdownx.highlight:
       anchor_linenums: true
-  - pymdownx.superfences 
+  - pymdownx.superfences
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
