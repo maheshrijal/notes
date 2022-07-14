@@ -1,10 +1,7 @@
 ---
 title: Managing docker containers 
 summary: starting, stopping, & other docker container management commands
-authors:
-    - Mahesh Rijal
 date: 2022-07-08
-some_url: https://snippets.maheshrjl.com/docker
 ---
 ### Starting docker containers
 ```sh
