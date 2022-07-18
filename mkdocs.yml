@@ -71,10 +71,11 @@ extra:
 
 nav:
   # - Home: "index.md"
-  # - Ansible:
+  - Ansible:
   #   - AdHoc Commands: "ansible/ad-hoc.md"
   #   - Playbook Execution: "ansible/playbook.md"
   #   - Background Jobs: "ansible/background.md"
+    - Ansible Snippets: "ansible/snippets.md"
 
   # - AWS:
   #   - EC2: "aws/ec2.md"
@@ -96,6 +97,7 @@ nav:
       #   - Processes: "linux/processes.md"
       - VI Editor: "linux/vi.md"
       - WSL2: "linux/wsl.md"
+      - SED: "linux/sed.md"
 
   # - Terraform: "terraform.md"
 
