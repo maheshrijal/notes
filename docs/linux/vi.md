@@ -23,3 +23,6 @@ date: 2022-07-14
 - `l` Forward a character
 - `w` One word forward
 - `b` Back one word
+
+### Vi Commands
+- `%d` Delete everything in a file
