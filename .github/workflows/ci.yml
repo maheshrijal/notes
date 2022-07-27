@@ -12,13 +12,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 #         with:
-#           fetch-depth: 0
+#           fetch-depth: 0 
           
       - name: setup python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
-          cache: 'pip'
+#           cache: 'pip'
           
       - run: pip install -r requirements.txt
       - run: mkdocs gh-deploy --force
