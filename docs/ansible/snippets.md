@@ -1,6 +1,6 @@
 
-### Disable pipelining for hosts where requiretty is enabled
-```ansible
+### Disable pipelining when requiretty is enabled
+```YAML
 - lineinfile:
     dest: /etc/sudoers
     line: 'Defaults requiretty'
