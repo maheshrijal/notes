@@ -4,7 +4,7 @@ hide:
   - toc
 ---
 
-# Hi! :wave_tone1:
+# Hi! 👋
 
 ### Thanks for stopping by. I store code snippets here. These are mostly for personal reference.
 
