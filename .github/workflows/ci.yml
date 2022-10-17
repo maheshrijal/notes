@@ -2,23 +2,15 @@ name: ci
 on:
   push:
     branches:
+      - master 
       - main
-      - source
-      - master
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-#         with:
-#           fetch-depth: 0 
-          
-      - name: setup python
-        uses: actions/setup-python@v4
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
-#           cache: 'pip'
-          
-      - run: pip install -r requirements.txt
+          python-version: 3.x
+      - run: pip install mkdocs-material 
       - run: mkdocs gh-deploy --force
