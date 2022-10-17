@@ -100,9 +100,10 @@ nav:
       #   - Processes: "linux/processes.md"
       - VI Editor: "linux/vi.md"
       - WSL2: "linux/wsl.md"
-      - SED: "linux/sed.md"
   - Windows:
       - Powershell: "windows/powershell.md"
+  - Kubernetes:
+      - Kubernetes Info : "kubernetes/k8s-intro.md"
 
   # - Terraform: "terraform.md"
 
@@ -124,9 +125,9 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
       clickable_checkbox: true
-  # - pymdownx.emoji:
-  #     emoji_index: !!python/name:materialx.emoji.twemoji
-  #     emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 extra_css:
   - stylesheets/extra.css

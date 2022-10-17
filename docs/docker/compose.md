@@ -34,7 +34,6 @@ docker-compose --help
 
 ``` YAML title="template.yaml"
 version: '3.1' # If no version is specified then v1 is assumed.
-
 services: #same as docker run i.e. containers
     servicename: #A friendly name that is also a DNS name (Smiliar to --name)
         image: #optional if using build
@@ -51,7 +50,6 @@ network: # Optional, same as docker network create
 
 ``` YAML title="hello-world.yaml"
 version: '3'
-
 services:
     web:
         build: .
