@@ -3,21 +3,46 @@ title: Managing docker images
 date: 2022-07-16
 ---
 # Docker images
-<!-- !!! tip " " -->
-Image contains applications binaries, dependencies for the app  along with metadata about how to run it
+!!! tip ""
+    Image contains applications binaries, dependencies for the app  along with metadata about how to run it
 
-### Image details
-- List downloaded images: `docker image ls`
-- View history of image layers: `docker image history nginx:latest `
-- Inspecting a docker image: `docker image inspect nginx`
+## Usage: ```docker image command```
 
-### Tagging images
-- Give a new tag to a image: `docker image tag <source-img:tag> <taget-image:tag>`
+#### Image details
 
-### Uploading images
-- Upload image to docker hub: `docker image push <img-name>`
+`ls` - List downloaded images
 
-### Cleaning up images
-- Clean up dangling images: `docker image prune`
-- Clean all images that are not in use: `docker image prune -a`
-- Clean up everything: `docker system prune`
+`build` — Build an image.
+
+`history` — See intermediate image info. Eg: `docker image history nginx:latest`
+
+`inspect` — Inspect the image, including the layers. Eg: `docker image inspect nginx`
+
+
+#### Tag image
+```shell
+docker image tag <source-img:tag> <taget-image:tag>
+```
+
+#### Upload image to docker hub
+```shell
+docker image push [OPTIONS] NAME[:TAG]
+```
+
+#### Cleaning up images
+
+Remove dangling images
+
+```shell
+docker image prune
+```
+
+Remove images that are not in use
+```
+docker image prune -a
+```
+
+Cleanup everything
+```
+docker system prune
+```
