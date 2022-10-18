@@ -74,7 +74,7 @@ extra:
 nav:
   # - Home: "index.md"
   - Ansible:
-      #   - AdHoc Commands: "ansible/ad-hoc.md"
+      - AdHoc Commands: "ansible/ad-hoc.md"
       #   - Playbook Execution: "ansible/playbook.md"
       #   - Background Jobs: "ansible/background.md"
       - Ansible Snippets: "ansible/snippets.md"
