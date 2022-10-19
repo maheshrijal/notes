@@ -100,10 +100,17 @@ nav:
       #   - Processes: "linux/processes.md"
       - VI Editor: "linux/vi.md"
       - WSL2: "linux/wsl.md"
+
+  - Networking:
+      - DNS: "networking/dns.md"
+
   - Windows:
       - Powershell: "windows/powershell.md"
+
   - Kubernetes:
       - Kubernetes Info : "kubernetes/k8s-intro.md"
+      - kubectl : "kubernetes/kubectl.md"
+      - Networking: "kubernetes/services.md"
 
   # - Terraform: "terraform.md"
 

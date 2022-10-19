@@ -5,7 +5,7 @@ title: Kubernetes intro, overview & advantages
 # Introduction to Kubernetes
 
 - Kubernetes is container orchestrator making many servers act like one.
-- Kubernetes usually run's on top of `docker` but can use other container runtimes like `containerd`
+- Kubernetes usually run's on top of `docker` but can use other container runtimes like `containerd` or `crio`
 - Kubernetes provides API/CLI to manage containers across servers
 - Similar to linux distributions there are kubernetes distributions as well
 
@@ -29,6 +29,23 @@ title: Kubernetes intro, overview & advantages
 `kubelet` - Kubernetes agent running on every node.
 
 `control plane` - A set of container that manage the clusters(Also called master). Similar to manager in swarm.
-  - Include API server, scheduler, controller manager, etcd
+  - Includes API server, scheduler, controller manager, etcd
 
-# Installation & Setup
+#### Pod
+- One or more container running together on one node
+
+- Containers are always in pods
+
+#### Controllers
+- Used to for creating/updated pods & other objects
+
+- Pods can be deployed directly (without containers) but not recommended
+
+##### Types of controllers
+- Deployment
+
+- ReplicaSet
+
+- StatefulSet
+
+- Job
