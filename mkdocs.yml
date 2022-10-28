@@ -98,6 +98,7 @@ nav:
       #   - Finding Text: "linux/find.md"
       #   - Files & Dirs: "linux/files-dirs.md"
       #   - Processes: "linux/processes.md"
+      - Curl: "linux/curl.md"
       - VI Editor: "linux/vi.md"
       - WSL2: "linux/wsl.md"
 
