@@ -13,8 +13,9 @@ theme:
     code: Fira Code
   icon:
     repo: fontawesome/brands/github
-    logo: fontawesome/solid/terminal
+    logo: fontawesome/solid/m
     edit: material/file-document-edit
+  favicon: images/favicon.png
   language: en
   features:
     - navigation.instant #  clicks on all internal links will be intercepted and dispatched via XHR without fully reloading the page
@@ -37,14 +38,14 @@ theme:
       scheme: default
       primary: black
       toggle:
-        icon: material/weather-night
+        icon: material/toggle-switch
         name: Dark mode
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: black
       toggle:
-        icon: material/weather-sunny
+        icon: material/toggle-switch-off-outline
         name: Light mode
 plugins:
   - search
@@ -53,7 +54,7 @@ plugins:
       fallback_to_build_date: true
       type: timeago
 extra:
-  generator: true
+  generator: false
   social:
     - icon: fontawesome/brands/linkedin
       link: https://linkedin.com/in/maheshrjl
@@ -112,7 +113,6 @@ nav:
   - Kubernetes:
       - Kubernetes Info : "kubernetes/k8s-intro.md"
       - kubectl : "kubernetes/kubectl.md"
-      - Networking: "kubernetes/services.md"
       - Services: "kubernetes/services.md"
       - Terminology: "kubernetes/terminology.md"
 
