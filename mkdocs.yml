@@ -116,8 +116,6 @@ nav:
       - Services: "kubernetes/services.md"
       - Terminology: "kubernetes/terminology.md"
 
-  # - Terraform: "terraform.md"
-
 markdown_extensions:
   - admonition
   - tables
