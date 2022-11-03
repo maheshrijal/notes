@@ -34,6 +34,8 @@ title: Kubernetes intro, overview & advantages
 #### Pod
 - One or more container running together on one node
 
+- Pod is a abstraction of the container
+
 - Containers are always in pods
 
 #### Controllers

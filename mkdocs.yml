@@ -48,10 +48,10 @@ theme:
         name: Light mode
 plugins:
   - search
-#   - git-revision-date-localized:
-#       # enable_creation_date: true
-#       fallback_to_build_date: true
-#       type: timeago
+  - git-revision-date-localized:
+      enable_creation_date: true
+      fallback_to_build_date: true
+      type: timeago
 extra:
   generator: true
   social:
@@ -107,11 +107,14 @@ nav:
 
   - Windows:
       - Powershell: "windows/powershell.md"
+      - WSL: "linux/wsl.md"
 
   - Kubernetes:
       - Kubernetes Info : "kubernetes/k8s-intro.md"
       - kubectl : "kubernetes/kubectl.md"
       - Networking: "kubernetes/services.md"
+      - Services: "kubernetes/services.md"
+      - Terminology: "kubernetes/terminology.md"
 
   # - Terraform: "terraform.md"
 
