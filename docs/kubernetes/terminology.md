@@ -61,6 +61,9 @@ A ReplicaSet's purpose is to maintain a stable set of replica Pods running at an
 A ReplicaSet ensures that a specified number of pod replicas are running at any given time.
 
 
+### Deployment Strategies
+
+
 ### kubectl abbreviations
 
 | Long Name      | Short Name |
