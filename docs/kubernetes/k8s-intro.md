@@ -21,6 +21,9 @@ title: Kubernetes intro, overview & advantages
 - Wide adoption in the community
 - Flexible: cover a wide range of use cases
 
+
+
+
 ## Terminology
 `kubectl` -  The CLI to configure & manage apps.
 
@@ -37,6 +40,7 @@ title: Kubernetes intro, overview & advantages
 - Pod is a abstraction of the container
 
 - Containers are always in pods
+
 
 #### Controllers
 - Used to for creating/updated pods & other objects

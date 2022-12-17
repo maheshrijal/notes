@@ -23,6 +23,7 @@ theme:
     - navigation.tabs # When tabs are enabled, top-level sections are rendered in a menu layer below the header for viewports above 1220px, but remain as-is on mobile.
     # - navigation.tabs.sticky # , navigation tabs will lock below the header and always remain visible when scrolling down.
     - navigation.indexes
+    # - navigation.sections
     # - header.autohide
     - navigation.expand
     - toc.follow
@@ -112,9 +113,14 @@ nav:
 
   - Kubernetes:
       - Kubernetes Info : "kubernetes/k8s-intro.md"
+      - 'kubectl':
+          - 'pods': "kubernetes/kubectl/pods.md"
+          - 'deployments': "kubernetes/kubectl/deployments.md"
+          - 'services': kubernetes/services.md
       - kubectl : "kubernetes/kubectl.md"
       - Services: "kubernetes/services.md"
       - Terminology: "kubernetes/terminology.md"
+      - k8s-yaml: "kubernetes/k8s-yaml.md"
 
 markdown_extensions:
   - admonition
@@ -128,6 +134,7 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.snippets
   - attr_list
   - md_in_html
   - def_list
