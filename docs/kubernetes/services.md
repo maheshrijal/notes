@@ -31,6 +31,16 @@ NodePort exposes the service on each Node’s IP at a static port (the NodePort)
 
 - Node port must be in the range of 30000–32767. Manually allocating a port to the service is optional. If it is undefined, Kubernetes will automatically assign one.
 
+## LoadBalancer
+- LoadBalancer service is an extension of NodePort service. NodePort and ClusterIP Services, to which the external load balancer routes, are automatically created.
+
+- It integrates NodePort with cloud-based load balancers & exposes the Service externally using a cloud provider’s load balancer.
+
+- The cloud providers assigns the external IP to the LoadBalancer automatically
+
+- In local k8s cluster LoadBalancer behaves similar to NodePort
+
+
 <!--
 ## Services present on all nodes
 
