@@ -33,6 +33,7 @@ theme:
     - search.share
     - navigation.top
     - content.code.annotate
+    - content.code.copy
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
@@ -81,10 +82,12 @@ nav:
       #   - Background Jobs: "ansible/background.md"
       - Ansible Snippets: "ansible/snippets.md"
 
-  # - AWS:
-  #   - EC2: "aws/ec2.md"
-  #   - S2: "aws/s3.md"
-  #   - IAM: "aws/iam.md"
+  - AWS:
+      - 'AWS CLI':
+          - EC2: "aws-cli/ec2.md"
+          - S3: "aws-cli/s3.md"
+          - IAM: "aws-cli/iam.md"
+
   - Docker:
       - Docker Info: "docker/docker-info.md"
       - Docker Images: "docker/docker-images.md"
