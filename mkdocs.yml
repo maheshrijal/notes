@@ -25,7 +25,7 @@ theme:
     - navigation.indexes
     # - navigation.sections
     # - header.autohide
-    - navigation.expand
+    # - navigation.expand
     - toc.follow
     # - toc.integrate # Show TOC on the left panel along with sections
     - search.suggest
@@ -89,7 +89,7 @@ nav:
           - IAM: "aws/aws-cli/iam.md"
       - AWS Infrastructure: "aws/infrastructure.md"
       - IAM: "aws/iam.md"
-      - VPC: "aws/vpc.md"
+      # - VPC: "aws/vpc.md"
 
   - Docker:
       - Docker Info: "docker/docker-info.md"
