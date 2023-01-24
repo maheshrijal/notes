@@ -51,10 +51,10 @@ theme:
         name: Light mode
 plugins:
   - search
-  - git-revision-date-localized:
-      enable_creation_date: true
-      fallback_to_build_date: true
-      type: timeago
+  # - git-revision-date-localized:
+  #     enable_creation_date: true
+  #     fallback_to_build_date: true
+  #     type: timeago
 extra:
   generator: false
   social:
