@@ -84,9 +84,12 @@ nav:
 
   - AWS:
       - 'AWS CLI':
-          - EC2: "aws-cli/ec2.md"
-          - S3: "aws-cli/s3.md"
-          - IAM: "aws-cli/iam.md"
+          - EC2: "aws/aws-cli/ec2.md"
+          - S3: "aws/aws-cli/s3.md"
+          - IAM: "aws/aws-cli/iam.md"
+      - AWS Infrastructure: "aws/infrastructure.md"
+      - IAM: "aws/iam.md"
+      - VPC: "aws/vpc.md"
 
   - Docker:
       - Docker Info: "docker/docker-info.md"
