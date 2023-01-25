@@ -83,5 +83,6 @@ Eg IAM Policy
 ### Credential Report: Account Level
 - A report that lists all account users & status of their credentials
 
+
 ### Access Advisor: User-level
 - Shows service permissions granted to a user and when those services were last accessed
