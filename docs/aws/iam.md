@@ -19,6 +19,7 @@ Groups let us specify permission for multiple users. Identity based policies can
 Used when AWS services need to perform action on users behalf. Permissions to AWS Services are assigned with IAM Roles. Policies are attached to one principal, however, Roles can be asssumed by anyone.
 
 Roles can be used by:
+
 - IAM user in the same AWS account as the role
 - IAM user in a different AWS account
 - A web service offered by AWS like EC2
@@ -82,5 +83,5 @@ Eg IAM Policy
 ### Credential Report: Account Level
 - A report that lists all account users & status of their credentials
 
-### Access Advisor: Sser-level
+### Access Advisor: User-level
 - Shows service permissions granted to a user and when those services were last accessed
