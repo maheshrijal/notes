@@ -1,23 +1,26 @@
-site_name: Maheshrjl's Cheatsheets
-site_url: https://cheats.maheshrjl.com/
+site_name: Maheshrjl's Notes
+site_description: Hi! I'm Mahesh Rijal. I document notes, code snippets, scripts and various other things here.These are from my learnings in DevOps & Cloud, day to day work or some coool things I found on the internet.
+site_url: https://notes.maheshrjl.com/
 site_author: Mahesh Rijal
-repo_url: https://github.com/maheshrjl/cheatsheets
-repo_name: maheshrjl/cheatsheets
+repo_url: https://github.com/maheshrjl/notes
+repo_name: maheshrjl/notes
 edit_uri: edit/main/docs/
-copyright: Copyright &copy;2023 <a href="https://github.com/maheshrjl" target="_blank" rel="noopener">Mahesh Rijal</a>
+copyright: Copyright &copy;2023 <a href="https://twitter.com/maheshrjl" target="_blank" rel="noopener"> Mahesh Rijal</a>
 
 theme:
   name: material
   font:
     text: Roboto
     code: Fira Code
+  # logo: assets/logo.png
   icon:
     repo: fontawesome/brands/github
-    logo: fontawesome/solid/m
-    edit: material/file-document-edit
-  favicon: images/favicon.png
+    logo: fontawesome/solid/campground
+    edit: material/pen
+  favicon: images/favicon.ico
   language: en
   features:
+    - content.action.edit
     - navigation.instant #  clicks on all internal links will be intercepted and dispatched via XHR without fully reloading the page
     - navigation.tracking # URL in the address bar is automatically updated with the active anchor as highlighted in the table of contents
     - navigation.tabs # When tabs are enabled, top-level sections are rendered in a menu layer below the header for viewports above 1220px, but remain as-is on mobile.
