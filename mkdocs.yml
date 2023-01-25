@@ -89,7 +89,7 @@ nav:
           - IAM: "aws/aws-cli/iam.md"
       - AWS Infrastructure: "aws/infrastructure.md"
       - IAM: "aws/iam.md"
-      # - VPC: "aws/vpc.md"
+      - EC2: "aws/ec2.md"
 
   - Docker:
       - Docker Info: "docker/docker-info.md"
@@ -112,6 +112,7 @@ nav:
 
   - Networking:
       - DNS: "networking/dns.md"
+      - Ports: "networking/ports.md"
 
   - Windows:
       - Powershell: "windows/powershell.md"
