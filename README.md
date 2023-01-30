@@ -1,3 +1,5 @@
 # Maheshrjl's Notes
 
-## Website => [notes.maheshrjl.com](notes.maheshrjl.com)
+## Notes, documentation and cheatsheets.  👇
+
+## <a href="https:/notes.maheshrjl.com"><p style="text-align:center">notes.maheshrjl.com</p></a>

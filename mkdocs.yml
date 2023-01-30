@@ -93,6 +93,7 @@ nav:
       - AWS Infrastructure: "aws/infrastructure.md"
       - IAM: "aws/iam.md"
       - EC2: "aws/ec2.md"
+      - Availability & Scalability: "aws/ha.md"
 
   - Docker:
       - Docker Info: "docker/docker-info.md"
