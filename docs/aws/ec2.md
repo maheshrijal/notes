@@ -216,13 +216,13 @@ Limitations: Instance RAM size must be less than 150 GB, does not work on bare m
 
 EBS (Elastic Block Store) volume is a network drive that is attached to EC2 instance while they run. It allows for data persistence even after instance termination.
 
-- Some EBS volume supoprt multi attach (Can be attached to multiple EC2 instances.)
+- Some EBS volume support multi attach (Can be attached to multiple EC2 instances.)
 - EBS volumes are bound to a specific AZ
 - In the free tier 30GB of EBS storage is allowed per month
 - Uses the network to communicate to the instance (Latency)
 - Can be detached from a instance & attached to another one quickly
 - Have provisioned capacity (Size in GB & IOPS)
-- EBS volumes have a delete on termination option when creating EC2 instances. (Delete on termination is enabled on root volume by default but on on EBS volume)
+- EBS volumes have a delete on termination option when creating EC2 instances. (Delete on termination is enabled on root volume by default but not on EBS volume)
 
 #### EBS Snapshot
 
@@ -241,7 +241,7 @@ EBS Volumes are categorized in `size`, `iops`, `throughput`.
 - ST1 (HDD): Low cost HDD volumes designed for frequently accessed, throughput intensive workloads
 - SC1 (HDD): Lowest cost HDD volume designed for less frequently accessed workloads
 
-!!! note
+!!! warning
     For EC2 instances only `GP2/GP3` & `IO1/IO2` can be used as boot volumes.
 
 **General Purpose SSD(GP2/GP3):**
@@ -311,12 +311,12 @@ Use case:
 
 #### EBS Encryption
 
-Following is available with an EBS volume encryption.
+Following is available with EBS volume encryption.
 
 - Data is encrypted inside the EBS volume
 - All the data in-flight moving between the instance and the volume is encrypted
 - All snapshots are encrypted & all volumes created from snapshots are encrpted.
-- Encryption & Decryption is handled transparently. No actionr required from the user.
+- Encryption & Decryption is handled transparently. No action required from the user.
 - Encryption has minimal impact on latency
 - EBS encryption leverages keys from **KMS (AES-256)**
 - Copying an unencrypted snapshot allows encryption.
@@ -365,7 +365,7 @@ Use case: Content management, web-sharing, data sharing, wordpress
 
 **EBS Volumes:**
 
-    - 1 instnace (Except MultiAttach for IO1/IO2)
+    - 1 instance (Except MultiAttach for IO1/IO2)
     - Locked at AZ level
     - GP2: IO increases as the disk size increases
     - IO1: Can increase IO independently
@@ -376,7 +376,7 @@ Use case: Content management, web-sharing, data sharing, wordpress
 **EFS**
 
     - Mounting to 100s of instances across AZ
-    - Only forn Linux Instances (POSIX)
+    - Only supports Linux Instances (POSIX)
     - More expensive than EBS
     - Can leverage EFS-IA for cost savings
 
@@ -385,7 +385,7 @@ Use case: Content management, web-sharing, data sharing, wordpress
 Instance store is physical storage attached to the EC2 instance rather than the network store (EBS volume).
 
 - Better I/O performance
-- EC2 instance store is ephemeral (Looses data on instnace termination)
+- EC2 instance store is ephemeral (Looses data on instance termination)
 - Good for buffer/cache/temporary data
 - Risk of data loss if hardware fails
 - Backups & Replication are your responsiblity
