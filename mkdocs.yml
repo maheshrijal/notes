@@ -54,10 +54,10 @@ theme:
         name: Light mode
 plugins:
   - search
-  # - git-revision-date-localized:
-  #     enable_creation_date: true
-  #     fallback_to_build_date: true
-  #     type: timeago
+  - git-revision-date-localized:
+      enable_creation_date: true
+      fallback_to_build_date: true
+      type: timeago
 extra:
   generator: false
   social:
@@ -94,7 +94,8 @@ nav:
       - IAM: "aws/iam.md"
       - EC2: "aws/ec2.md"
       - Availability & Scalability: "aws/ha.md"
-      # - RDS: "aws/rds.md"
+      - RDS: "aws/rds.md"
+      - Elasticache: "aws/elasticache.md"
 
   - Docker:
       - Docker Info: "docker/docker-info.md"
@@ -114,6 +115,7 @@ nav:
       - Curl: "linux/curl.md"
       - VI Editor: "linux/vi.md"
       - WSL2: "linux/wsl.md"
+      - Cron: "linux/cron.md"
 
   - Networking:
       - DNS: "networking/dns.md"

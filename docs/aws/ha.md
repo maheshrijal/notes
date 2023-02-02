@@ -197,9 +197,8 @@ The role of auto scaling group (ASG) is to:
 !!! note
     ASG are free (You only pay for underlying EC2 instances)
 
-ASG are created with a **Launch Template**
+ASG are created with a **Launch Template**. It Contains information about how to launch EC2 instances
 
-- Contains information about how to launch EC2 instances
 - AMI + instance type
 - EC2 user data
 - SSH Keys
@@ -225,7 +224,7 @@ ASG are created with a **Launch Template**
 3. Scheduled Actions
 
     - Anticipate scaling based on known usage patterns
-    - Eg: increase min capacity to 10 at 6 PM on Firday
+    - Eg: increase min capacity to 10 at 6 PM on Friday
 
 #### Predictive Scaling
 

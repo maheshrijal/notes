@@ -8,7 +8,7 @@ date: 2023-01-25
 An Amazon Machine Image (AMI) is a customization of an EC2 instance.
 
     - You add your own software, configuration, operating system, monitoring etc
-    - Allowed for faster boot time because software is pre-packaged
+    - Allows for faster boot time because software is pre-packaged
     - AMI is built for a specific region, but can be copied across regions
 
 EC2 instances can be launched from:
@@ -177,7 +177,7 @@ Allow control over where EC2 instances are placed in AWS infrastructure. Followi
 
 3. Partition
     - Spread instances across partitions (Different set of racks) within an AZ.
-    - Upto 7 paritions per AZ & Scales to 100s of EC2 instances per group
+    - Upto 7 partitions per AZ & Scales to 100s of EC2 instances per group
     - Instances are isolated from rack failure (Instances in a rack do not share instances in other partitions)
     - Can span across multiple AZs in the same region
     - EC2 instances get access to parition using the metadata
