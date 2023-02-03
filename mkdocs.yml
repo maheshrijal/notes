@@ -54,28 +54,24 @@ theme:
         name: Light mode
 plugins:
   - search
-  - git-revision-date-localized:
-      enable_creation_date: true
-      fallback_to_build_date: true
-      type: timeago
 extra:
   generator: false
   social:
     - icon: fontawesome/brands/linkedin
       link: https://linkedin.com/in/maheshrjl
-      # name: Connect with me on LinkedIn :)
+      name: Connect with me on LinkedIn :)
 
     - icon: fontawesome/solid/paper-plane
       link: mailto:mhs@maheshrjl.com
-      # name: Send me a mail
+      name: Send me an mail
 
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/maheshrjl
-      # name: Follow me on Twitter
+      name: Twitter
 
     - icon: fontawesome/brands/github
       link: https://github.com/maheshrjl
-      # name: See my other projects
+      name: See my other projects
 
 nav:
   # - Home: "index.md"
@@ -96,6 +92,7 @@ nav:
       - Availability & Scalability: "aws/ha.md"
       - RDS: "aws/rds.md"
       - Elasticache: "aws/elasticache.md"
+      - Route 53: "aws/route53.md"
 
   - Docker:
       - Docker Info: "docker/docker-info.md"
