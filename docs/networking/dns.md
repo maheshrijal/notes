@@ -2,6 +2,16 @@
 title: DNS Records, DoH & DoT
 ---
 
+## DNS Terminologies
+
+Domain Registrar:  Where you register your domain (Route 53, Namecheap)
+DNS Records: A, AAAA, CNAME, NS
+Zone File: Contains DNS records
+Name Server: Resolves DNS queries (Authoritative & Non-Authoritative)
+Top Level Domain(TLD): .com, .gov, .me
+Seconds Level Domain(SLD): google.com, maheshrjl.com
+
+
 ## DNSSEC
 - DNSSEC validates DNS queries by a chain of trust
 - The DNS root is signed therefore all results obtained from the root servers are trusted by default
