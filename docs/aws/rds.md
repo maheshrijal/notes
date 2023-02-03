@@ -4,7 +4,7 @@ date: 2023-02-02
 ---
 # Relational Database Service (RDS)
 
-RDS is a managed database service which use SQL as the primary language. It allows to create following type of databases: `Postgres, MySQL, Maria DB, Oracle, Microsoft SQL Server, Aurora (AWS Proprietary Database)`
+RDS is a managed database service which uses SQL as the primary language. It allows to create following type of databases: `Postgres, MySQL, Maria DB, Oracle, Microsoft SQL Server, Aurora (AWS Proprietary Database)`
 
 - Automated provisioning, OS patching
 - Continous backup & restore specific timestamp (Point in time restore)
@@ -20,7 +20,7 @@ RDS is a managed database service which use SQL as the primary language. It allo
 
 ## Storage Auto Scaling
 
-Helps you increase storage on your RDS DB instance dynamically. When RDS detecs you are running out of free storage, it scales automatically. You have to set a **Maximum Storage Threshold** (Maximum limit for DB storage). Supports all database engines.
+Helps you increase storage on your RDS DB instance dynamically. When RDS detects you are running out of free storage, it scales automatically. You have to set a **Maximum Storage Threshold** (Maximum limit for DB storage). Supports all database engines.
 
 Automatically modify storage if:
 
