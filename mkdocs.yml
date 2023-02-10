@@ -93,6 +93,7 @@ nav:
       - RDS: "aws/rds.md"
       - Elasticache: "aws/elasticache.md"
       - Route 53: "aws/route53.md"
+      - Containers: "aws/containers.md"
 
   - Docker:
       - Docker Info: "docker/docker-info.md"
