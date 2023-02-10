@@ -28,7 +28,7 @@ Automatically modify storage if:
     - Low-Storage lasts at least 5 Minutes
     - 6 hours have passed since last modification
 
-Useful for applications with unpredictable worklaods.
+Useful for applications with unpredictable workloads.
 
 ## Read Replica vs Multi AZ
 
@@ -49,7 +49,7 @@ In AWS there's a network cost when data goes from one AZ to another. But, for RD
 RDS Multi AZ is benefical for Disaster Recovery.
 
 - SYNC Replication
-- One DNS name  - Automatica failover to standby instance
+- One DNS name  - Automatic failover to standby instance
 - Increased availability
 - Failover in case of loss of AZ, loss of network or storage failure
 - No manual intervention
@@ -63,16 +63,16 @@ RDS Multi AZ is benefical for Disaster Recovery.
 - Zero downtime operation
 - Just click on modify for DB & enable multi AZ
 
-Internally a snapshot is taken & a new DB is restored from the snapshot in the target AZ. Then, a synchronization is established between two databases.
+Internally a snapshot is taken & a new DB is restored from the snapshot in the target AZ. Then, synchronization is established between two databases.
 
 ## RDS Custom
 
-Managed Oracle & Microsoft SQL Server Database with OS & database customization. Offers all the beneifts of RDS along with `underlying DB, OS, EC2 access`. Deactivate automation mode to to perform customization & it is better to take a DB snapshot beforehand.
+Managed **Oracle & Microsoft SQL** Server Database with OS & database customization. Offers all the beneifts of RDS along with `underlying DB, OS, EC2 access`. Deactivate automation mode to to perform customization & it is better to take a DB snapshot beforehand.
 
 ## Amazon Aurora
 
-- Proprietary Datbase from AWS
-- Postgres & MySQL are both supported as Aurora DB (Drivers work as if the DB is aurora/mysql)
+- Proprietary database from AWS
+- **Postgres & MySQL** are supported as Aurora DB (Drivers work as if the DB is aurora/mysql)
 - Aurora is `AWS Cloud Optimized` & claims 5x performance improvement over MySql on RDS & over 3x performance improvement over Postgres on RDS
 - Storage grows automatically in incrememts of 10GB upto 128 TB
 - Aurora can have 15 Replicas while MYSQL has 5 and the replication process is faster `sub 10 ms lag`
@@ -85,7 +85,7 @@ Managed Oracle & Microsoft SQL Server Database with OS & database customization.
 - 4 copies out of 6 for writes
 - 3 copies out of 6 for reads
 - Self healing with Peer to Peer Replication
-- Storage is stripped across 100s of
+- Storage is stripped across 100s of volumes
 - 1 Aurora instance (master) takes writes
 - Automatic failover (Less than 30 seconds)
 - Master + upto 15 Read Replicas
@@ -106,18 +106,18 @@ Replica Autoscaling can be added based on Target Metric (Average CPU Utilization
 
 ### Aurora Replicas - Autoscaling
 
-If there are huge number of reads in our replicas. Replica autoscaling can be setup additional reader endpoints after detecting the CPU load in the reader endpoints.
+If there are huge number of reads in our replicas. Replica autoscaling can setup additional reader endpoints after detecting the CPU load in the reader endpoints.
 
 ### Aurora - Custom Endpoints
 
-- Some reader replica instances are larger than others (Instnace Type).
+- Some reader replica instances are larger than others (Instance Type).
 - This is done to define a a subset of Aurora Instances as a Custom Endpoint.
 - The Reader Endpoint is generally not used after defining Custom Endpoints.
 - Eg Usage: Run analytical queries on specific replicas.
 
 ### Aurora - Serverless
 
-- Automated database instantiation & auto-scaling absed on actual usage.
+- Automated database instantiation & auto-scaling based on actual usage.
 - Good for infrequent intermittent or unpredicatable workloads.
 - No capcity is planning is required and you `pay per second`.
 - In the backend aurora manages a proxy fleet & clients talk to proxy fleet.
@@ -214,11 +214,11 @@ Use Case: Fraud detection, ads targeting, sentiment analysis, product recommenda
 
 **At-rest encryption**
 
-- Database master & replicas encryption using AWS-KMS - must be defines at launch time
+- Database master & replicas encryption using AWS-KMS - must be defined at launch time
 - If the master is not encrypted, the read replicas cannot be encrypted
 - To encrypt an un-encrypted database, go through a DB snapshot & restore as encrypted
 
-**In-Flight encryption**: TLS-ready by default, use the AWS TLS root certificates client side
+**In-Flight encryption**: TLS-ready by default, use the AWS TLS root certificates
 
 **IAM Authentication**: IAM roles to connect to your database (instead of username/password)
 
@@ -227,13 +227,13 @@ Use Case: Fraud detection, ads targeting, sentiment analysis, product recommenda
 **Audit Logs**: Can be enabled & sent to CloudWatch logs for longer retention
 
 !!! tip
-    RDS & Aurora do not have SSH Access except on RDS Custom
+    RDS & Aurora do not have SSH access except on RDS Custom
 
 ## RDS Proxy
 
-- Fully managed RDS proxy for RDS
+- Fully managed proxy for RDS
 - Allows apps to **pool & share DB connections** established with the DB
-- Improve database efficiency by reducing the stress on DB resources (CPU/RAM). Also minimizes open conenctions & timeouts
+- Improve database efficiency by reducing the stress on DB resources (CPU/RAM). Also minimizes open connections & timeouts
 - Proxy is serverless, autoscaling, highly available (Multi-AZ)
 - Reduces RDS & Auora failover time by up to 66% in case of failover
 - No code change required for most apps

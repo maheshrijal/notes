@@ -19,8 +19,8 @@ date: 2023-02-03
 - Work for root domain & Non Root domains
 - Alias records are free
 - Native health check
-- Unlike CNMAE it can be used for Zone Apex (Eg: example.com)
-- Alias records if always of type A/AAAA for AWS resource
+- Unlike CNAME it can be used for Zone Apex (Eg: example.com)
+- Alias records are always of type A/AAAA for AWS resource
 - TTL cannot be set for Alias records
 
 Target: ELB, Cloudfront Distribution, API Gateway, Elastic Beanstalk, S3 Websites, VPC Interface Endpoints, AWS Global Aceelerator, Route 53 Records in the same hosted zone
@@ -75,7 +75,7 @@ Target: ELB, Cloudfront Distribution, API Gateway, Elastic Beanstalk, S3 Website
 - Ability to **shift traffic from one region to other** based on the defined bias
 - Expand Traffic (Bias: 1 - 99) Decrease Traffic (Bias: -1 - -99)
 - Resource can be AWS Resources or On-Premise resources (Specify Latitute/Longitude)
-- Must use Route 53 traffic flow(advances) to use this feature
+- Must use Route 53 traffic flow(advanced) to use this feature
 
 ### Multivalue Answer Routing Policy
 
