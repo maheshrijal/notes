@@ -5,7 +5,10 @@ site_author: Mahesh Rijal
 repo_url: https://github.com/maheshrjl/notes
 repo_name: maheshrjl/notes
 edit_uri: edit/main/docs/
-copyright: Copyright &copy;2023 <a href="https://twitter.com/maheshrjl" target="_blank" rel="noopener"> Mahesh Rijal</a>
+#copyright: Copyright &copy;2023 <a href="https://twitter.com/maheshrjl" target="_blank" rel="noopener"> Mahesh Rijal</a>
+
+# Add copyright that gets current year automatically
+copyright: Copyright &copy;{{ build_date_utc.strftime('%Y') }} <a href="https://twitter.com/maheshrjl" target="_blank" rel="noopener"> Mahesh Rijal</a>
 
 theme:
   name: material
@@ -69,6 +72,10 @@ extra:
       link: https://twitter.com/maheshrjl
       name: Twitter
 
+    - icon: fontawesome/brands/mastodon
+      link: https://mastodon.online/@maheshrjl
+      name: Fediverse
+
     - icon: fontawesome/brands/github
       link: https://github.com/maheshrjl
       name: See my other projects
@@ -82,7 +89,7 @@ nav:
       - Ansible Snippets: "ansible/snippets.md"
 
   - AWS:
-      - 'AWS CLI':
+      - "AWS CLI":
           - EC2: "aws/aws-cli/ec2.md"
           - S3: "aws/aws-cli/s3.md"
           - IAM: "aws/aws-cli/iam.md"
@@ -90,10 +97,13 @@ nav:
       - IAM: "aws/iam.md"
       - EC2: "aws/ec2.md"
       - Availability & Scalability: "aws/ha.md"
+      - S3: "aws/s3.md"
       - RDS: "aws/rds.md"
       - Elasticache: "aws/elasticache.md"
       - Route 53: "aws/route53.md"
       - Containers: "aws/containers.md"
+      - SQS: "aws/messaging/sqs.md"
+      - Global Acclerator: "aws/global-accelerator.md"
 
   - Docker:
       - Docker Info: "docker/docker-info.md"
@@ -124,15 +134,18 @@ nav:
       - WSL: "linux/wsl.md"
 
   - Kubernetes:
-      - Kubernetes Info : "kubernetes/k8s-intro.md"
-      - 'kubectl':
-          - 'pods': "kubernetes/kubectl/pods.md"
-          - 'deployments': "kubernetes/kubectl/deployments.md"
-          - 'services': kubernetes/services.md
-      - kubectl : "kubernetes/kubectl.md"
+      - Kubernetes Info: "kubernetes/k8s-intro.md"
+      - "kubectl":
+          - "pods": "kubernetes/kubectl/pods.md"
+          - "deployments": "kubernetes/kubectl/deployments.md"
+          - "services": kubernetes/services.md
+      - kubectl: "kubernetes/kubectl.md"
       - Services: "kubernetes/services.md"
       - Terminology: "kubernetes/terminology.md"
       - k8s-yaml: "kubernetes/k8s-yaml.md"
+
+  - Misc:
+      - "Web Requests": "misc/web-requests.md"
 
 markdown_extensions:
   - admonition
