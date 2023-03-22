@@ -5,10 +5,7 @@ site_author: Mahesh Rijal
 repo_url: https://github.com/maheshrjl/notes
 repo_name: maheshrjl/notes
 edit_uri: edit/main/docs/
-#copyright: Copyright &copy;2023 <a href="https://twitter.com/maheshrjl" target="_blank" rel="noopener"> Mahesh Rijal</a>
-
-# Add copyright that gets current year automatically
-copyright: Copyright &copy;{{ build_date_utc.strftime('%Y') }} <a href="https://twitter.com/maheshrjl" target="_blank" rel="noopener"> Mahesh Rijal</a>
+copyright: Copyright &copy;2023 <a href="https://twitter.com/maheshrjl" target="_blank" rel="noopener"> Mahesh Rijal</a>
 
 theme:
   name: material
@@ -104,6 +101,8 @@ nav:
       - Containers: "aws/containers.md"
       - SQS: "aws/messaging/sqs.md"
       - Global Acclerator: "aws/global-accelerator.md"
+      - Cloudformation: "aws/cloudformation.md"
+      - AWS Hacks: "aws/hacks.md"
 
   - Docker:
       - Docker Info: "docker/docker-info.md"
