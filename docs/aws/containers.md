@@ -62,3 +62,20 @@ Use cases: Persistent multi AZ storage for containers
 
 !!! warning
     S3 cannot be mounted as a file system to ECS tasks
+
+### ECS Autoscaling
+
+- Automatically increase/decrease the number of tasks based on
+    - CPU Utilization
+    - Memory utilization
+    - ALB Request Count Per Target - Metric coming from the ALB
+- ECS Auto Scaling uses AWS Application Auto Scaling
+
+**Target Tracking** - Scale based on a target value for a specific CloudWatch metric
+
+**Step Scaling** - Scale based on a specified CloudWatch Alarm
+
+**Scheduled Scaling** - Scale based on a specified date/time
+
+!!! note
+    ECS Service Auto Scaling (task level) != EC2 Auto Scaling (instance level). Fargate Auto Scaling is much easier to setup than EC2 Auto Scaling
