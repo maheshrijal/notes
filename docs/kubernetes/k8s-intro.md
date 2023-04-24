@@ -2,14 +2,14 @@
 title: Kubernetes intro, overview & advantages
 ---
 
-# Introduction to Kubernetes
+# Kubernetes introduction and architecture
 
 - Kubernetes is container orchestrator making many servers act like one.
 - Kubernetes usually run's on top of `docker` but can use other container runtimes like `containerd` or `crio`
 - Kubernetes provides API/CLI to manage containers across servers
 - Similar to linux distributions there are kubernetes distributions as well
 
-### Advantages of Swarm
+### Advantages of Docker Swarm
 - Comes with docker, single vendor container platform
 - Easiest to deploy & manage
 - Can run anywhere docker does Eg: local, cloud, datacenter, ARM, windows 32-bit, 64-bit
@@ -22,36 +22,63 @@ title: Kubernetes intro, overview & advantages
 - Flexible: cover a wide range of use cases
 
 
+## Kubernetes architecture
 
+### Pod
 
-## Terminology
-`kubectl` -  The CLI to configure & manage apps.
+- Kubernetes does not run containers directly, it runs pods (Containers encapsulated in pods)
+- Pod is the smallest unit of deployment in kubernetes
+- Pod is a single instance of an application
+- A single pod can have multiple containers but they are usually not multiple containers of the same application Eg: `Healthcheck container`, `Helper container`. However, this is a rare use case
+- Containers in a pod share the same IP address and port space (Can communicate with each other using localhost)
 
-`node` - Single server kubernetes cluster.
+```
+kubectl run nginx --image nginx
+```
 
-`kubelet` - Kubernetes agent running on every node.
+1. Creates a Pod
+
+2. Deploys nginx docker container inside the pod
+
+### Cluster
+
+- A cluster is a set of nodes grouped together
+
+<!-- `kubelet` - Kubernetes agent running on every node.
 
 `control plane` - A set of container that manage the clusters(Also called master). Similar to manager in swarm.
   - Includes API server, scheduler, controller manager, etcd
+-->
 
-#### Pod
-- One or more container running together on one node
+## Controllers
 
-- Pod is a abstraction of the container
+- Components in the Kubernetes system that monitor and manage the state of the resources running in a Kubernetes cluster.
 
-- Containers are always in pods
+### Types of controllers
+
+#### Replication Controller
+
+- Run multiple instances of a pod across the cluster providing fault tolerance and high availability
+- Even in a single node cluster, replication controller can be used to restart a pod if it fails
+
+!!! warning
+
+    [Replication controller](/kubernetes/k8s-yaml/#replication-controller) is deprecated in favor of ReplicaSet
 
 
-#### Controllers
-- Used to for creating/updated pods & other objects
+#### ReplicaSet
 
-- Pods can be deployed directly (without containers) but not recommended
+<!-- - ReplicaSet is a controller that manages a set of pods
+- ReplicaSet ensures that a specified number of pod replicas are running at any given time
+- ReplicaSet is the next generation Replication Controller
+- ReplicaSet is the recommended way to manage pods -->
 
-##### Types of controllers
-- Deployment
+
+
+<!-- - Deployment
 
 - ReplicaSet
 
 - StatefulSet
 
-- Job
+- Job -->
