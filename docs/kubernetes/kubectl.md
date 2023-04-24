@@ -197,6 +197,29 @@ kubectl delete all --all
     This also deletes the default kubernetes(ClusterIP) service but it is re-created automatically
 
 
+## Replicas
+
+### Replication Controller
+Get Replication Controller
+```
+kubectl get rc
+```
+
+### Replica Set
+
+Get Replica Set
+```
+kubectl get rs
+```
+
+Scale Replica Set
+```
+kubectl scale --replicas=5 -f replicaset replicaset.yml
+```
+!!! warning
+
+    This will create 5 replicas of the pods defined in the replicaset.yml file but does not update the replicaset.yml file
+
 ## YAML Configuration
 
 Every kubernetes configuration file has 3 parts

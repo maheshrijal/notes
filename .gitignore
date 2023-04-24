@@ -1,0 +1,11 @@
+/site
+/site/*
+/site/**/*
+/docs/__pycache__
+/docs/.cache
+/docs/site
+/docs/site/*
+/docs/site/**/*
+
+
+env/
