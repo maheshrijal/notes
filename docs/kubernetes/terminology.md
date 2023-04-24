@@ -23,6 +23,10 @@ Labels can be used to:
     ```
     kubectl logs -l key=val
     ```
+- apply filters to replica sets
+    ```
+    kubectl get rs -l key=val
+    ```
 
 ### Label selectors
 
