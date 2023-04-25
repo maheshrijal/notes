@@ -139,6 +139,35 @@ kubectl  rollout status deploy k8s-hello
 kubectl delete deployment nginx-deploy
 ```
 
+## Rollout
+
+Get rollout status
+```
+kubectl rollout status name
+```
+
+Get rollout history/revision
+
+```
+kubectl rollout history name
+```
+
+Undo rollout deployment
+
+```
+ kubectl rollout undo deployment myapp-deployment
+```
+
+### Deployment strategies
+
+#### Recreate
+
+This strategy will terminate all the old pods and then create new ones with the new configuration. This will cause downtime.
+
+#### Rolling Update
+
+This strategy will create new pods with the new configuration and then terminate the old ones gradually. It will create new pods with the new configuration and then terminate the old ones gradually. This will not cause downtime. This is the default strategy.
+
 ## [Services](/kubernetes/services/#kubernetes-services)
 
 ### Create a [ClusterIP](/kubernetes/services/#clusterip)
@@ -185,6 +214,10 @@ Delete service
 kubectl delete service nginx-deploy
 ```
 
+Get all objects in the default namespace
+```
+kubectl get all
+```
 
 ### Cleanup
 
@@ -216,9 +249,24 @@ Scale Replica Set
 ```
 kubectl scale --replicas=5 -f replicaset replicaset.yml
 ```
+
+```
+kubectl scale rs --replicas=5 replicaset
+```
+
 !!! warning
 
     This will create 5 replicas of the pods defined in the replicaset.yml file but does not update the replicaset.yml file
+
+Edit Replica Set Inline
+
+```
+kubectl edit rs replicaset
+```
+
+!!! info
+
+    This will open the replicaset.yml file in the default editor and any changes made will be applied immediately to the replicaset
 
 ## YAML Configuration
 
