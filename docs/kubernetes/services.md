@@ -4,7 +4,7 @@ title: Kubernetes services and types
 
 # Kubernetes Services
 
-An abstract way to expose an application running on a set of Pods as a network service.
+An abstract way to expose an application running on a set of Pods as a network service. These services enable communication within and outside the application.
 
 
 ## ClusterIP
