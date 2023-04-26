@@ -202,7 +202,7 @@ kubectl expose deployment k8s-hello --type=LoadBalancer --port=3000
 
 ### List services
 ```
-kubectl get services
+kubectl get svc
 ```
 Get Service Details
 ```
