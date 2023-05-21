@@ -138,11 +138,8 @@ nav:
       - Services: "kubernetes/services.md"
       - Terminology: "kubernetes/terminology.md"
       - k8s-yaml: "kubernetes/k8s-yaml.md"
-  - Scripts:
-      - "Scripts": "scripts/scripts.md"
 
-  - Misc:
-      - "Web Requests": "misc/web-requests.md"
+  - Scripts: "scripts.md"
 
 markdown_extensions:
   - admonition
