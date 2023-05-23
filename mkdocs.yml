@@ -139,7 +139,7 @@ nav:
       - Terminology: "kubernetes/terminology.md"
       - k8s-yaml: "kubernetes/k8s-yaml.md"
 
-  - Scripts: "scripts.md"
+  - Snippets: "snippets.md"
 
 markdown_extensions:
   - admonition
