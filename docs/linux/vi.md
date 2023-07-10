@@ -38,6 +38,11 @@ date: 2023-01-21
 - `ndd` Delete n lines of buffer
 - `%d` Delete all lines in a file
 
+### Removing text
+
+- `d0` Remove all text to the left of the cursor
+- `d$` Delete from current position to the end of the line
+
 ### Search and Replace
 
 Syntax: `:[address]s/old_text/new_text/`
