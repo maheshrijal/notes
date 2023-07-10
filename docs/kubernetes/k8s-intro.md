@@ -68,10 +68,10 @@ kubectl run nginx --image nginx
 
 #### ReplicaSet
 
-<!-- - ReplicaSet is a controller that manages a set of pods
+- ReplicaSet is a controller that manages a set of pods
 - ReplicaSet ensures that a specified number of pod replicas are running at any given time
 - ReplicaSet is the next generation Replication Controller
-- ReplicaSet is the recommended way to manage pods -->
+- ReplicaSet is the recommended way to manage pods
 
 
 
