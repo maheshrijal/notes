@@ -4,7 +4,7 @@ date: 2023-01-24
 ---
 # AWS IAM (Identity & Access Management)
 
-## IAM User & Groups
+## IAM Users & Groups
 
 Groups let us specify permission for multiple users. Identity based policies can be attached to a group
 

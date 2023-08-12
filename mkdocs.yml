@@ -54,6 +54,8 @@ theme:
         name: Light mode
 plugins:
   - search
+  - git-revision-date-localized:
+      enable_creation_date: true
 extra:
   generator: false
   social:
@@ -140,6 +142,11 @@ nav:
       - k8s-yaml: "kubernetes/k8s-yaml.md"
 
   - Snippets: "snippets.md"
+
+  - TIL:
+      - "til/index.md"
+      - "Browser":
+          - "Duplicate Browser Tab": "til/browser/duplicate-the-current-browser-tab.md"
 
 markdown_extensions:
   - admonition
