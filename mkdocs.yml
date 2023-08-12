@@ -55,7 +55,11 @@ theme:
 plugins:
   - search
   - git-revision-date-localized:
+      type: timeago
+      locale: en
+      fallback_to_build_date: false
       enable_creation_date: true
+      enabled: true
 extra:
   generator: false
   social:
@@ -147,6 +151,8 @@ nav:
       - "til/index.md"
       - "Browser":
           - "Duplicate Browser Tab": "til/browser/duplicate-the-current-browser-tab.md"
+      - "Git":
+          - "Git Push requirs Username & Password": "til/git/git-push-requires-username-password.md"
 
 markdown_extensions:
   - admonition
