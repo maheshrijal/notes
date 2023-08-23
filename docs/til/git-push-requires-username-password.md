@@ -1,5 +1,5 @@
 ---
-title: Git Push Requires Username & Password
+title: Git Push Prompting for Username & Password
 date: 2023-08-12
 ---
 
