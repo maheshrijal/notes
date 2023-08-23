@@ -1,5 +1,5 @@
 ---
-title: Shortcut to duplicate the current browser tab
+title: Shortcut to duplicate the current browser tab with shortcut
 date: 2023-08-12
 ---
 
