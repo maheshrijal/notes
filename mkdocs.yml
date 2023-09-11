@@ -86,11 +86,11 @@ nav:
       - Ansible Snippets: "ansible/snippets.md"
 
   - AWS:
-      - "AWS CLI":
+      - "CLI":
           - EC2: "aws/aws-cli/ec2.md"
           - S3: "aws/aws-cli/s3.md"
           - IAM: "aws/aws-cli/iam.md"
-      - AWS Infrastructure: "aws/infrastructure.md"
+      - Infrastructure: "aws/infrastructure.md"
       - IAM: "aws/iam.md"
       - EC2: "aws/ec2.md"
       - Availability & Scalability: "aws/ha.md"
@@ -100,9 +100,9 @@ nav:
       - Route 53: "aws/route53.md"
       - Containers: "aws/containers.md"
       - SQS: "aws/messaging/sqs.md"
-      - Global Acclerator: "aws/global-accelerator.md"
+      - CDN: "aws/cdn.md"
       - Cloudformation: "aws/cloudformation.md"
-      - AWS Hacks: "aws/hacks.md"
+      # - AWS Hacks: "aws/hacks.md"
 
   - Docker:
       - Docker Info: "docker/docker-info.md"
@@ -142,10 +142,11 @@ nav:
   - Snippets: "snippets.md"
 
   - TIL:
+      - "Label commit messages with Conventional Commits": "til/using-conventional-commits.md"
+      - "Copy files Recursively from Docker": "til/recursive-copy-docker.md"
+      - "Git Push asking Username & Password": "til/git-push-requires-username-password.md"
       - "til/index.md"
       - "Duplicate Browser Tab": "til/duplicate-the-current-browser-tab.md"
-      - "Git Push asking Username & Password": "til/git-push-requires-username-password.md"
-      - "Copy files Recursively from Docker": "til/recursive-copy-docker.md"
 
 markdown_extensions:
   - admonition
