@@ -53,9 +53,9 @@ Cloudfront edge locations are all around the world & cost of data out per edge l
 
 Reduce the number of edge locations for cost reduction.
 
-1. Price Class All: All regions - best performance
-2. Price Class 200: Most regions, but excludes the most expensive regions
-3. Price Class 100: Only the least expensive regions
+1. **Price Class All**: All regions - best performance
+2. **Price Class 200**: Most regions, but excludes the most expensive regions
+3. **Price Class 100**: Only the least expensive regions
 
 ### Cache Invalidation
 
@@ -67,3 +67,23 @@ If the backend origin is updated, Cloudfront doesn't know about it until the TTL
 ## AWS Global Accelerator
 
 AWS Global Accelerator is a service that improves the availability and performance of your applications with local or global users. It provides static IP addresses that act as a fixed entry point to your application endpoints in a single or multiple AWS Regions, and uses the AWS global network to optimize the path from your users to your applications.
+
+<!-- - Leverage the AWS internal network to route to your application
+- 2 Anycast IP are created for your application
+- The Anycast IP send traffic directly to edge locations
+- Edge locations send traffic to your application through private network -->
+
+**Unicast IP** : One server holds one IP address
+
+**Anycast IP** : All servers hold the same IP address & the client is routed to the nearest server.
+
+<!-- - Works with Elastic IP, EC2 Instances, ALB, NLB, public or private
+- Consistent performance
+- Health Checks
+  - Performs application health checks
+  - Helps make your application global
+  - Great for disaster recovery
+
+- Security
+  - Only 2 external IP need to be whitelisted
+  - DDoS protection through AWS Shield -->
