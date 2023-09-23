@@ -6,7 +6,7 @@ date: 2023-03-20
 # AWS CloudFormation
 
 - Resources are defined in a JSON or YAML file called a template that describes the AWS resources you want to create and the dependencies between them.
-- Resourcesa are not created manually, which is a huge time saver & excellent for control
+- Resources are not created manually, which is a huge time saver & excellent for control
 
 ## CloudFormation Cost
 
@@ -19,3 +19,6 @@ date: 2023-03-20
 - Ability to destroy and recreate infrastructure on the fly
 - Automated diagram generation
 - Declearative approach to infrastructure: No need to figure out the order of creation
+
+!!! warning
+    `Resources` section in a Cloudformation tempalte is the only mandatory section. However, If both `Description` & `AWSTemplateFormatVersion` are present in a template, the `Description` must be below the `AWSTemplateFormatVersion`

@@ -35,7 +35,8 @@ date: 2023-01-21
 - `U` Undo all changes on line
 - `:w !sudo tee %` Save a file that is opened without sudo
 - `dd` Delete current line
-- `ndd` Delete n lines of buffer
+- `ndd` Delete n lines of buffer below the cursor
+- 'ndk' Delete n lines of buffer above the cursor
 - `%d` Delete all lines in a file
 
 ### Removing text
@@ -53,15 +54,15 @@ Syntax: `:[address]s/old_text/new_text/`
 - `:s/foo/bar/` replace the first match of 'foo' with 'bar' on the current line only
 
 #### Address components
-| Address      | Description                          |
-| ----------- | ------------------------------------ |
-| `.`       | Current line  |
-| `n`       | Line number |
-| `$`    | Last line |
-| `n.+m`    |Current line plus m lines |
-| `/string/`    | A line that contains "string" |
-| `%`    | Entire file |
-| `[addr1],[addr2]`   | Specifies a range |
+| Address           | Description                   |
+| ----------------- | ----------------------------- |
+| `.`               | Current line                  |
+| `n`               | Line number                   |
+| `$`               | Last line                     |
+| `n.+m`            | Current line plus m lines     |
+| `/string/`        | A line that contains "string" |
+| `%`               | Entire file                   |
+| `[addr1],[addr2]` | Specifies a range             |
 
 
 ## VI Commands
