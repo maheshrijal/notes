@@ -78,6 +78,14 @@ Eg IAM Policy
 }
 ```
 
+### IAM Policy Priorites
+
+If policy json contains same permissions for the resources, this comes into effect. Lower the number higher the priority.
+
+1. Explicit Deny
+2. Explicit Allow
+3. Default DENY (Implicit)
+
 ## IAM Security Tools
 
 ### Credential Report: Account Level
