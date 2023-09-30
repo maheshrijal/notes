@@ -1,8 +1,4 @@
----
-title: AWS VPC
-date: 2023-01-24
----
-# AWS VPC
+# AWS Virtual Private Cloud
 
 A VPC is a virtual network inside AWS. A VPC is within 1 account & 1 Region.
 

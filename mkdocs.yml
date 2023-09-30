@@ -1,5 +1,5 @@
 site_name: Maheshrjl's Notes
-site_description: Hi! I'm Mahesh Rijal. I document notes, code snippets, scripts and various other things here.These are from my learnings in DevOps & Cloud, day to day work or some coool things I found on the internet.
+site_description: Short snippets/scripts for quick reference, mostly related DevOps & Linux.
 site_url: https://notes.maheshrjl.com/
 site_author: Mahesh Rijal
 repo_url: https://github.com/maheshrjl/notes
@@ -12,7 +12,7 @@ theme:
   font:
     text: Roboto
     code: Fira Code
-  # logo: assets/logo.png
+  logo: assets/logo.png
   icon:
     repo: fontawesome/brands/github
     logo: fontawesome/solid/campground
@@ -20,22 +20,14 @@ theme:
   favicon: images/favicon.ico
   language: en
   features:
-    - content.action.edit
+    - content.action.edit # Show a edit button on page
+    - content.action.view # Show a view source button on page
     - navigation.instant #  clicks on all internal links will be intercepted and dispatched via XHR without fully reloading the page
-    - navigation.tracking # URL in the address bar is automatically updated with the active anchor as highlighted in the table of contents
-    - navigation.tabs # When tabs are enabled, top-level sections are rendered in a menu layer below the header for viewports above 1220px, but remain as-is on mobile.
-    # - navigation.tabs.sticky # , navigation tabs will lock below the header and always remain visible when scrolling down.
-    - navigation.indexes
-    # - navigation.sections
-    # - header.autohide
-    # - navigation.expand
-    - toc.follow
-    # - toc.integrate # Show TOC on the left panel along with sections
+    - navigation.tabs
     - search.suggest
     - search.highlight
     - search.share
     - navigation.top
-    - content.code.annotate
     - content.code.copy
   palette:
     # Palette toggle for light mode
@@ -52,18 +44,24 @@ theme:
       toggle:
         icon: material/toggle-switch-off-outline
         name: Light mode
+  shortcuts:
+    next: 78 # n
+    previous: 80 # p
+    search: 83 # s
 plugins:
-  - search
+  - search:
+      lang: en
+  - minify:
+      minify_html: true
 extra:
-  generator: false
   social:
     - icon: fontawesome/brands/linkedin
       link: https://linkedin.com/in/maheshrjl
       name: Connect with me on LinkedIn :)
 
     - icon: fontawesome/solid/paper-plane
-      link: mailto:hi@maheshrjl.com
-      name: Send me an mail
+      link: https://maheshrjl.com/contact
+      name: Contact me
 
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/maheshrjl
@@ -78,31 +76,27 @@ extra:
       name: See my other projects
 
 nav:
-  # - Home: "index.md"
   - Ansible:
-      - AdHoc Commands: "ansible/ad-hoc.md"
-      #   - Playbook Execution: "ansible/playbook.md"
-      #   - Background Jobs: "ansible/background.md"
-      - Ansible Snippets: "ansible/snippets.md"
-
+      - AdHoc Commands: "ansible/adhoc.md"
+      - Snippets: "ansible/snippets.md"
   - AWS:
       - "CLI":
-          - EC2: "aws/aws-cli/ec2.md"
-          - S3: "aws/aws-cli/s3.md"
-          - IAM: "aws/aws-cli/iam.md"
-      - Infrastructure: "aws/infrastructure.md"
-      - IAM: "aws/iam.md"
-      - EC2: "aws/ec2.md"
-      - Availability & Scalability: "aws/ha.md"
-      - S3: "aws/s3.md"
-      - RDS: "aws/rds.md"
-      - Elasticache: "aws/elasticache.md"
-      - Route 53: "aws/route53.md"
-      - Containers: "aws/containers.md"
-      - SQS: "aws/messaging/sqs.md"
-      - CDN: "aws/cdn.md"
-      - Cloudformation: "aws/cloudformation.md"
-      # - AWS Hacks: "aws/hacks.md"
+          - EC2: "AWS/CLI/EC2.md"
+          - S3: "AWS/CLI/S3.md"
+          - IAM: "AWS/CLI/IAM.md"
+      - Infrastructure: "AWS/infrastructure.md"
+      - IAM: "AWS/iam.md"
+      - EC2: "AWS/ec2.md"
+      - S3: "AWS/s3.md"
+      - RDS: "AWS/rds.md"
+      - VPC: "AWS/vpc.md"
+      - Route 53: "AWS/route53.md"
+      - Elasticache: "AWS/elasticache.md"
+      - Containers: "AWS/containers.md"
+      - SQS: "AWS/sqs.md"
+      - CDN: "AWS/cdn.md"
+      - Cloudformation: "AWS/cloudformation.md"
+      - Availability & Scalability: "AWS/ha.md"
 
   - Docker:
       - Docker Info: "docker/docker-info.md"
@@ -111,63 +105,48 @@ nav:
       - Docker Networking: "docker/networking.md"
       - Docker Storage & Volumes: "docker/storage.md"
       - Docker Compose: "docker/compose.md"
-    # - Cleanup: "docker/cleanup.md"
-    # - Orchestration: "docker/orchestration.md"
 
   - Linux:
-      #   - Bash Shell: "linux/bash.md"
-      #   - Finding Text: "linux/find.md"
-      #   - Files & Dirs: "linux/files-dirs.md"
-      #   - Processes: "linux/processes.md"
       - Curl: "linux/curl.md"
-      - VI Editor: "linux/vi.md"
+      - VIM: "linux/vim.md"
       - WSL2: "linux/wsl.md"
       - Cron: "linux/cron.md"
 
-  - Networking:
-      - DNS: "networking/dns.md"
-      - Ports: "networking/ports.md"
-
-  - Windows:
-      - Powershell: "windows/powershell.md"
-      - WSL: "linux/wsl.md"
+  # - Networking:
+  #     - DNS: "networking/dns.md"
+  #     - Ports: "networking/ports.md"
 
   - Kubernetes:
-      - Kubernetes Info: "kubernetes/k8s-intro.md"
-      - kubectl: "kubernetes/kubectl.md"
-      - Services: "kubernetes/services.md"
-      - Terminology: "kubernetes/terminology.md"
-      - k8s-yaml: "kubernetes/k8s-yaml.md"
+      - Intro: "k8s/intro.md"
+      - Architecture: "k8s/architecture.md"
+      - kubectl: "k8s/kubectl.md"
+      - Services: "k8s/services.md"
+      - Terminology: "k8s/terminology.md"
+      - Examples: "k8s/examples.md"
 
   - Snippets: "snippets.md"
 
-  - TIL:
-      - "Label commit messages with Conventional Commits": "til/using-conventional-commits.md"
-      - "Copy files Recursively from Docker": "til/recursive-copy-docker.md"
-      - "Git Push asking Username & Password": "til/git-push-requires-username-password.md"
-      - "til/index.md"
-      - "Duplicate Browser Tab": "til/duplicate-the-current-browser-tab.md"
+  - TIL: 
+      - Today I Learned: "til/index.md"
+      - Label commit messages with Conventional Commits: "til/using-conventional-commits.md"
+      - Copy files Recursively from Docker: "til/recursive-copy-docker.md"
+      - Git Push asking Username & Password: "til/git-push-requires-username-password.md"
+      - Duplicate Browser Tab: "til/duplicate-the-current-browser-tab.md"
 
 markdown_extensions:
   - admonition
   - tables
-  # - meta
+  - meta
+  - attr_list
+  - def_list
+  - pymdownx.tasklist
+  - pymdownx.highlight
+  - pymdownx.magiclink
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.snippets
   - toc:
       permalink: true
-      title: On this page
-  - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.superfences
-  - pymdownx.tabbed:
-      alternate_style: true
-  # - pymdownx.details # Collapsible content blocks
-  - pymdownx.snippets
-  - attr_list
-  - md_in_html
-  - def_list
-  - pymdownx.tasklist:
-      custom_checkbox: true
-      clickable_checkbox: true
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
