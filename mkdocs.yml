@@ -127,7 +127,7 @@ nav:
   - Snippets: "snippets.md"
 
   - TIL: 
-      - Today I Learned: "til/index.md"
+      - "til/index.md"
       - Label commit messages with Conventional Commits: "til/using-conventional-commits.md"
       - Copy files Recursively from Docker: "til/recursive-copy-docker.md"
       - Git Push asking Username & Password: "til/git-push-requires-username-password.md"
