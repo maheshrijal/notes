@@ -1,7 +1,11 @@
-.md-footer__inner:not([hidden]) {
+/* .md-footer__inner:not([hidden]) {
     display: none
 }
 
 .twitter {
   color: #1DA1F2;
+} */
+
+code {
+  white-space: pre-wrap;
 }
