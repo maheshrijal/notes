@@ -47,6 +47,9 @@ git rebase --exec 'git commit --amend --no-edit --no-verify -S' -i --root
 git rebase --committer-date-is-author-date -i --root
 ```
 
+```sh title="Delete local git branches except a few"
+ git branch | grep -v "main" | grep -v "master" | xargs git branch -D
+```
 
 ## Powershell 
 
