@@ -1,7 +1,4 @@
----
-title: Cloudfront & Global Accelerator
-date: 2023-03-07
----
+# Cloudfront & Global Accelerator
 
 ## Cloudfront
 
