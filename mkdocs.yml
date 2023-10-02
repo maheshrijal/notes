@@ -140,7 +140,9 @@ markdown_extensions:
   - attr_list
   - def_list
   - pymdownx.tasklist
-  - pymdownx.highlight
+  - pymdownx.highlight:
+      anchor_linenums: true
+      use_pygments: true
   - pymdownx.magiclink
   - pymdownx.superfences
   - pymdownx.tabbed
