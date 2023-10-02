@@ -126,8 +126,9 @@ nav:
 
   - Snippets: "snippets.md"
 
-  - TIL: 
+  - TIL:
       - "til/index.md"
+      - Terminate hung SSH session: "til/disconnect-hung-ssh-session.md"
       - Label commit messages with Conventional Commits: "til/using-conventional-commits.md"
       - Copy files Recursively from Docker: "til/recursive-copy-docker.md"
       - Git Push asking Username & Password: "til/git-push-requires-username-password.md"
