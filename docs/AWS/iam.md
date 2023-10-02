@@ -11,8 +11,13 @@ Groups let us specify permission for multiple users. Identity based policies can
 - Users are people in AWS & can be grouped.
 - User don't have to belong to a group, & they can also belong to multiple groups
 - IAM user group is a collection of IAM users.
-- User groups can't be nested.
+- User **groups cannot be nested** & logged into.
 - Users or Groups can be assigned JSON documents called policies. These documents define permissions.
+- IAM Groups have no user limits. All 5000 users can be part of the IAM group. Also, there is no built in all user group in IAM.
+
+!!! warning
+
+    Groups are not a true identity. Groups cannot be referenced as a principal in a policy. A resource policy cannot grant access to a IAM group.
 
 ## IAM Roles
 
@@ -58,7 +63,7 @@ Policies that are added to single user, group or role. Maintain a strict one-to-
 
 Eg IAM Policy
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
