@@ -97,6 +97,7 @@ nav:
       - CDN: "AWS/cdn.md"
       - Cloudformation: "AWS/cloudformation.md"
       - Availability & Scalability: "AWS/ha.md"
+      - Encryption: "AWS/encryption.md"
 
   - Docker:
       - Docker Info: "docker/docker-info.md"
