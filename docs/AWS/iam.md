@@ -99,3 +99,14 @@ If policy json contains same permissions for the resources, this comes into effe
 
 ### Access Advisor: User-level
 - Shows service permissions granted to a user and when those services were last accessed
+
+## Service Control Policies
+
+- SCPs can be applied to the organization, to OU's or to individual accounts. 
+- Policies inherit down a tree (Eg: Root > OU > AWS Accounts)
+- These policies limit what the account (including root user) can do. The root user cannot be restricted. But, by restricting an account, the root user is also restricted.
+- SCPs DON'T GIVE permission - they just control what an account CAN and CANNOT grant via identity policies.
+
+!!! warning 
+
+    Management account is never impacted by Service Control Policies.
