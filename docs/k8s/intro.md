@@ -63,7 +63,7 @@ kubectl run nginx --image nginx
 
 !!! warning
 
-    [Replication controller](/kubernetes/k8s-yaml/#replication-controller) is deprecated in favor of ReplicaSet
+    Replication controller is deprecated in favor of ReplicaSet
 
 
 #### ReplicaSet

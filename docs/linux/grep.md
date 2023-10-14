@@ -10,10 +10,15 @@ grep -i 'Alias' /.bashrc
 ```
 ##### Recursive search within sub-dirs
 ```bash
-grep -r 'error' /var/log   
+grep -r 'error' /var/log
 ```
 
 ##### Returns file without matches
 ```bash
 grep -L 'Alias' /home/mhs*
+```
+
+##### Show line number
+```bash
+grep -n
 ```

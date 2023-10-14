@@ -150,8 +150,8 @@ Implement `stickiness` so that the same client is always redirected to the same 
 **With Cross Zone Load Balancing**
 
 - Each load balancer distributes evenly across all registered instances in all az.
-- Enabled by default for [ALB](/aws/ha/#application-load-balancer-alb) but disabled by default for [NLB](/aws/ha/#network-load-balancer-nlb) & [GWLB](/aws/ha/#gateway-load-balancer-gwlb)
-- No charges for inter AZ data for [ALB](/aws/ha/#application-load-balancer-alb) but charges are incurred for [NLB](/aws/ha/#network-load-balancer-nlb) & [GWLB](/aws/ha/#gateway-load-balancer-gwlb)
+- Enabled by default for [ALB](ha.md#application-load-balancer-alb) but disabled by default for [NLB](ha.md#network-load-balancer-nlb) & [GWLB](ha.md#gateway-load-balancer-gwlb)
+- No charges for inter AZ data for [ALB](ha.md#application-load-balancer-alb) but charges are incurred for [NLB](ha.md#network-load-balancer-nlb) & [GWLB](ha.md#gateway-load-balancer-gwlb)
 
 **Without Cross Zone Load Balacnding**
 
