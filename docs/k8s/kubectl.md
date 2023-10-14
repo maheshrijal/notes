@@ -168,9 +168,9 @@ This strategy will terminate all the old pods and then create new ones with the 
 
 This strategy will create new pods with the new configuration and then terminate the old ones gradually. It will create new pods with the new configuration and then terminate the old ones gradually. This will not cause downtime. This is the default strategy.
 
-## [Services](/kubernetes/services/#kubernetes-services)
+## [Services](services.md#kubernetes-services)
 
-### Create a [ClusterIP](/kubernetes/services/#clusterip)
+### Create a [ClusterIP](services.md#clusterip)
 
 Expose a internal port 80 to the external port 8080
 ```
@@ -181,7 +181,7 @@ kubectl expose deployment nginx-deploy --port=8080 --target-port=80
     ClusterIP service will allow connecting from inside the kubernetes cluster.
     Used when we want to block connections from outside the kubernetes cluster but want the cluster itself to have access.
 
-### Create a [NodePort](/kubernetes/services/#nodeport)
+### Create a [NodePort](services.md#nodeport)
 ```
 kubectl expose deployment k8s-hello --type=NodePort --port=3000
 ```
@@ -189,7 +189,7 @@ kubectl expose deployment k8s-hello --type=NodePort --port=3000
 
     NodePort service will allow connecting from outside the kubernetes cluster
 
-### Create a [LoadBalancer](/kubernetes/services/#loadbalancer)
+### Create a [LoadBalancer](services.md#loadbalancer)
 ```
 kubectl expose deployment k8s-hello --type=LoadBalancer --port=3000
 ```
