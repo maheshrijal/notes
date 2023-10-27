@@ -24,26 +24,6 @@ Process to build an AMI:
     - Build an AMI - this creats an EBS snapshot
     - Launch instances from the AMI
 
-## Security Groups
-
-- Control how traffic is allowed into or out of ec2 instances
-- Security groups contain allow rules only
-- Rules can be referenced by IP or by security group
-- Can be attached to multiple instances
-- Locked down to a single region/vpc
-- All inbound traffic is blocked & outbound traffic is allowed by default
-- They control:
-    - Access to Ports
-    - Authrozied IPv4 & IPv6 address ranges
-    - Control of inbound network (from outside to the instance)
-    - Control of outbound network (from the instance to outside)
-
-!!! note
-
-    If the application is not accessible (timeout). Then it is most likely blocked by security group. But, if the
-    application throws a `connection refused` then it's an application error or it might not have launched.
-
-
 ## EC2 Instance Types
 
 ### General Purpose - T
