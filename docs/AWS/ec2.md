@@ -204,6 +204,10 @@ EBS (Elastic Block Store) volume is a network drive that is attached to EC2 inst
 - Have provisioned capacity (Size in GB & IOPS)
 - EBS volumes have a delete on termination option when creating EC2 instances. (Delete on termination is enabled on root volume by default but not on EBS volume)
 
+!!! warning "ONE AZ"
+
+    EBS strage is provisioned in **ONE AZ** and it is reslient in that AZ.
+
 #### EBS Snapshot
 
 Snapshots allows to create a backup of EBS volume. It is not necessary to detach a volume to take a snapshot, however, it is recommended. This snapshot can be used to create another EBS volume in another region or AZ(Snapshot must be copied to that region after creation).
