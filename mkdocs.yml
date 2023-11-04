@@ -1,6 +1,6 @@
-site_name: Maheshrjl's Notes
+site_name: Mahesh Rijal -  Notes
 site_description: Short snippets/scripts for quick reference, mostly related DevOps & Linux.
-site_url: https://notes.maheshrjl.com/
+site_url: https://maheshrijal.com/notes
 site_author: Mahesh Rijal
 repo_url: https://github.com/maheshrjl/notes
 repo_name: maheshrjl/notes
@@ -17,7 +17,7 @@ theme:
     repo: fontawesome/brands/github
     logo: material/bookmark-box
     edit: material/pen
-  favicon: images/favicon.ico
+  favicon: images/favicon.png
   language: en
   features:
     - content.action.edit # Show a edit button on page
@@ -58,7 +58,7 @@ plugins:
 extra:
   social:
     - icon: fontawesome/solid/paper-plane
-      link: https://maheshrjl.me
+      link: https://maheshrijal.com/contact
       name: Connect with me
 
 nav:
@@ -134,8 +134,8 @@ markdown_extensions:
   - toc:
       permalink: true
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 extra_css:
   - stylesheets/extra.css
