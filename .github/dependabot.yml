@@ -1,11 +1,15 @@
+---
 version: 2
 updates:
-  # Enable version updates for pip
   - package-ecosystem: pip
     directory: /
     schedule:
-      interval: "daily"
+      interval: daily
     assignees:
-      - "maheshrjl"
+      - maheshrjl
     reviewers:
-      - "maheshrjl"
+      - maheshrjl
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
