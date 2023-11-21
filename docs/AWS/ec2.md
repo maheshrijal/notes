@@ -212,15 +212,27 @@ EBS (Elastic Block Store) volume is a network drive that is attached to EC2 inst
 
 Snapshots allows to create a backup of EBS volume. It is not necessary to detach a volume to take a snapshot, however, it is recommended. This snapshot can be used to create another EBS volume in another region or AZ(Snapshot must be copied to that region after creation).
 
-- EBS Snapshot Archive: Move snapshot to an archive tier (75% cheaper). Takes 24 - 72 hours to to restore the archive.
+ - Snapshots are incremental volume copies to S3
+ - The first copy is a full copy of `data` on the volume
+ - Future snapshots are incremental
+ - Volumes can be created (restored) from snapshots
+ - Snapshots can be copied to other AWS region
+
+ **EBS Snapshots/Volume Performance Considerations**
+
+- New EBS Volume - Full performance immediately'
+- Snpshots restore lazily - fetched gradually
+- Requested blocks are fetched from S3 immediately (But performance is low)
+- Force a read of all data immediately (using DD) (Better performance)
 - Recycle bin for EBS snapshot(1 day to 1 year): Rules can be setup to retain deleted snapshots so that they can be recovered after accidental deletion.
-- Fast snapshot Restore (FSR): Force full initialization of snapshot & have no latency on first use. This feature is expensive($$$) but can be useful for large snapshots.
+- **Fast snapshot Restore (FSR)**: Force full initialization of snapshot & have no latency on first use. This feature is expensive($$$) but can be useful for large snapshots. (Upto 50 FSR per region - this is set on the snapshot & region. Eg: 1 snapshot restoring to 3 AZs is 3 snapshot restore sets)
+- EBS Snapshot Archive: Move snapshot to an archive tier (75% cheaper). Takes 24 - 72 hours to to restore the archive.
 
 #### EBS Volume Types
 
 EBS Volumes are categorized in `size`, `iops`, `throughput`.
 
-- GP2 / GP3 (SSD): General Purpose – general purpose, balances price and performance.
+- GP2 / GP3 (SSD): **General Purpose** – general purpose, balances price and performance.
 - IO1 / IO2 (SSD): Highest performance - Mission critical low latency or high throughput
 - ST1 (HDD): Low cost HDD volumes designed for frequently accessed, throughput intensive workloads
 - SC1 (HDD): Lowest cost HDD volume designed for less frequently accessed workloads
@@ -265,6 +277,13 @@ __IO2 Block Express (4 Gib - 64 TiB)__
 
     - Sub-millisecond latency
     - Max PIOPS: 256,000 with an IOPS:GiB ratio of 1000:1
+    - 260,000 IOPS & 7,500 MB/s per instnace maximum performance
+
+!!! tip "Per Instance Maximum Performance for Provisioned IOPS SSD"
+
+    - IO1 - 260,000 IOPS & throughput of 7500 MB/s
+    - IO2 - 160,000 IOPS & throughput of 4,750 MB/s
+    - IO2 Block Express - 260,000 IOPS & throughput of 7500 MB/s
 
 **Hard Disk Drives(ST1/SC1):**
 
@@ -291,7 +310,6 @@ Use case:
 
     - Acheive higher application availability in clustered linux applications (Eg: Teradata)
     - Application must manage concurrent write operations
-
 
 #### EBS Encryption
 
@@ -368,8 +386,22 @@ Use case: Content management, web-sharing, data sharing, wordpress
 
 Instance store is physical storage attached to the EC2 instance rather than the network store (EBS volume).
 
-- Better I/O performance
-- EC2 instance store is ephemeral (Looses data on instance termination)
+- Better I/O performance / Highest storage performance on AWS
+- Physically connected to one EC2 host & instances on that host can acces them
+- Instance Store price is included in the instance price (Use it or loose it)
+- They must be attached at launch
+- EC2 instance store is ephemeral (Dat lost on instance move, resize or hardware failure)
 - Good for buffer/cache/temporary data
 - Risk of data loss if hardware fails
 - Backups & Replication are your responsiblity
+
+
+## Refresher
+
+Cheap = ST1 or SC1
+Throughput..Streaming.. ST1
+Boot - Not ST1 or SC1
+GP2/3 - Upto 16,000 IOPS
+IO1/2 - Upto 64,000 IOPS (IO2 block express - 256,000)
+RAID0+EBS up to 260,000 IOPS (IO1/2)
+More than 260,000 IOPS - instance store (ephemeral)
