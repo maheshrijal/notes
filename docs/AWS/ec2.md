@@ -9,13 +9,15 @@ An Amazon Machine Image (AMI) is a customization of an EC2 instance.
 
     - You add your own software, configuration, operating system, monitoring etc
     - Allows for faster boot time because software is pre-packaged
-    - AMI is built for a specific region, but can be copied across regions
+    - AMI is built for a specific region, but can be copied across regions (AMI ID changes on copy)
 
 EC2 instances can be launched from:
 
     - A public AMI: AWS provided & maintained
     - Your own AMI: Self made & maintained
     - An AWS marketplace AMI: AMI provided / sold by someone else
+    - AMI has permissions (Public, Your account, Specific Accounts)
+    - AMI has a cost for the EBS snapshots that it refereces. (Billed for snapshot storage)
 
 Process to build an AMI:
 
@@ -23,6 +25,14 @@ Process to build an AMI:
     - Stop the instance (for data integrity)
     - Build an AMI - this creats an EBS snapshot
     - Launch instances from the AMI
+
+!!! tip
+
+    Creating an AMI from a configured instance + Application is known as **AMI Baking**
+
+!!! warning
+
+    AMI can't be edited. If edit is required launch instance > update configuration > create new AMI.
 
 ## EC2 Instance Types
 
@@ -324,7 +334,9 @@ Following is available with EBS volume encryption.
 - Copying an unencrypted snapshot allows encryption.
 - Snapshot of encrypted volumes are encrytped.
 - Any snapshot created forom a non-encrypted volume is not encrypted. But can be encrypted with copy function.
-
+- Each volume uses 1 unique DEK. Snapshots & future volumes created from the snapshot use the same DEK
+- Can't change a volume to NOT be encrypted once it is encrypted
+- OS is not aware of the encryption. Hence no performance loss
 
 ### EFS - Elastic File System.
 

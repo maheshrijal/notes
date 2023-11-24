@@ -1,0 +1,12 @@
+User-agent: Googlebot
+Disallow: /nogooglebot/
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: *
+Allow: /
+Disallow: /*.jpg
+Disallow: /*.png
+
+Sitemap: https://notes.maheshrijal.com/sitemap.xml
