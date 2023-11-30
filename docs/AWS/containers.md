@@ -8,15 +8,30 @@ date: 2023-02-10
 ## ECS - Elastic Container Service
 
 
-### Launch Types
+**Container Definition** is a pointer to where the container is stored & the port exposed.
 
-**EC2 Launch Type**
+**Task Definition** represents a self-contained application. It can have one or many containers defined. It represents the application as a whole.
+
+Task definition also stores:
+
+- The resources used by the tasks (CPU, Memory)
+- Networking mode
+- Compatiblity (EC2 mode or Fargate)
+- **Task Role (IAM Role that a task can assume)**
+
+**Service Definition** is a service that defines task scaling,  copies to run, capacity & resilience, load balancer etc
+
+### Launch Types / Cluster Mode
+
+**EC2 Mode**
 
 - You must provision & maintain the infrastructure
 - Each EC2 instance must run the ECS agent in the ECS cluster
 - AWS takes care of starting/stopping containers
+- You manage the container host, capacity & availablility
+- Can use reserved instnaces or spot instnaces (everything managed by customer)
 
-**Fargate Launch Type**
+**Fargate Mode**
 
 - AWS manages the infrastructure (No EC2 instances to manage)
 - Serverless

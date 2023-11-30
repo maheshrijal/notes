@@ -72,7 +72,7 @@ Workloads:
 
 EC2 user data is used to automate boot tasks such as Installing updates & Installing software. User data runs with root user.
 
-## Purchasing Options
+## Purchase Options
 
 ### On Demand Instance
 
@@ -143,10 +143,7 @@ EC2 instances running on hardware dedicated to a single customer. Hardware can b
 
 Planning in advance for capacity
 
-- Reserve On-Demand instance capacity in a specific AZ for any duration
-- No time commitments (create/cancel anytime) also, no billing discounts are available
-- Can be combined with regional reserved instances & savings plan for cost saving
-- Charged on-demand rates whether or not you run instances
+
 
 Workload: Suitable for short term uninterrupted worloads in a specific AZ
 
@@ -373,8 +370,6 @@ Use case: Content management, web-sharing, data sharing, wordpress
     - Regional (Previously:Standard): Multi-AZ, great for Production
     - One Zone: One AZ, great for dev, backup enabled by default, compatible with IFS-IA (EFS One Zone IA). Over 90% cost saving.
 
-
-
 ### EBS vs EFS
 
 **EBS Volumes:**
@@ -407,6 +402,13 @@ Instance store is physical storage attached to the EC2 instance rather than the 
 - Risk of data loss if hardware fails
 - Backups & Replication are your responsiblity
 
+## EC2 Instance Metadata
+
+- EC2 service provides data to instances
+- Accessible inside all instances
+- **Ip Address to access metadata: http://169.254.169.254/latest/meta-data/**
+- Common queries: Network, Environment, Authentication, Temporary SSH key (Used while EC2 instance cnnect), User-Data scripts
+- Metadata service is not authenticated or encrypted
 
 ## Refresher
 

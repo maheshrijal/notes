@@ -29,6 +29,7 @@ theme:
     - search.share
     - navigation.top
     - content.code.copy
+    - navigation.footer
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
@@ -59,7 +60,19 @@ extra:
   social:
     - icon: fontawesome/solid/paper-plane
       link: https://maheshrijal.com/contact
-      name: Connect with me
+      name: Contact me
+
+    - icon: fontawesome/brands/github
+      link: https://mrjl.me/github
+      name: GitHub
+
+    - icon: fontawesome/brands/mastodon
+      link: https://mrjl.me/mastodon
+      name: Mastodon
+
+    - icon: fontawesome/brands/linkedin
+      link: https://mrjl.me/linkedin
+      name: LinkedIn
 
 nav:
   - Ansible:
@@ -116,6 +129,8 @@ nav:
       - Copy files Recursively from Docker: "til/recursive-copy-docker.md"
       - Git Push asking Username & Password: "til/git-push-requires-username-password.md"
       - Duplicate Browser Tab: "til/duplicate-the-current-browser-tab.md"
+
+  - Blog ↗: https://maheshrijal.com/
 
 markdown_extensions:
   - admonition
