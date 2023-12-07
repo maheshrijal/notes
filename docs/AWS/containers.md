@@ -7,7 +7,6 @@ date: 2023-02-10
 
 ## ECS - Elastic Container Service
 
-
 **Container Definition** is a pointer to where the container is stored & the port exposed.
 
 **Task Definition** represents a self-contained application. It can have one or many containers defined. It represents the application as a whole.
@@ -51,7 +50,6 @@ Used by ECS agent to:
 
 **EC2 tasks Role - EC2 launch type & Fargate launch type**
 
-
 - Allows each task to have a specific role
 - Use different roles for different ECS services
 - Task role is defined in task definition
@@ -61,7 +59,6 @@ Used by ECS agent to:
 **Application Load Balancer** - Supported for most use cases
 
 **Network Load Balancer** - Recommended for high throughput & high performance or to pair with AWS Private Link
-
 
 ### Data Volumes - EFS
 
@@ -94,3 +91,13 @@ Use cases: Persistent multi AZ storage for containers
 
 !!! note
     ECS Service Auto Scaling (task level) != EC2 Auto Scaling (instance level). Fargate Auto Scaling is much easier to setup than EC2 Auto Scaling
+
+
+## EKS - Elastic Kubernetes Service
+
+- AWS Managed Kubernetes
+- Control plane scales and runs on multiple AZs
+- Integrates with AWS Services (ECR, ELB, IAM, VPC)
+- ETCD distributed across multiple AZs
+- Nodes can be **self managed**(self managed ec2), **managed node groups**(EKS handles provisioning & lifecycle management) or **Fargate**(Provision, Configure, Scale automatically)
+- Storage Providers include EBS, EFS, FSx

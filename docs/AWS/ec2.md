@@ -70,7 +70,11 @@ Workloads:
 
 ## EC2 User Data
 
-EC2 user data is used to automate boot tasks such as Installing updates & Installing software. User data runs with root user.
+- EC2 user data is used to automate boot tasks such as Installing updates & Installing software.
+- User data runs with root user.
+- User data is not secure & therefore should not be used for passwords or long term credentials.
+- Limited to 16 KB in size
+- Can be modified when instance is stopped but user-data is only executed once at launch.
 
 ## Purchase Options
 
@@ -126,12 +130,21 @@ Eg: (5$ per hour for 1 or 3 years.) Any usage beyond saving plan is billed On-De
 
 ### Dedicated Host
 
-Book an entire physical server. Physical EC2 server are available only to customer. Used when regulatory requirements specify that you must not be using multi-tenant computing.
+Book an entire physical server. Physical EC2 server are available only to 1 customer. Used when regulatory requirements specify that you must not be using multi-tenant computing.
 
 - Allows customer to address compliance requirements, use existing server-bound software licenses & control instance placement.
+- Host hardware has physical sockets and cores
 - Dedicated hosts can be purchased on-demand or reserved for 1/3 years
 - Most expensive option
 - Customer gets access to the physical server & visibility into lower level hardware
+- No instance charges, you pay for the EC2 host
+
+**Limitations**
+
+- AMI Limits: RHEL, SUSE Linux and Windows AMIs are not supported
+- Amazon RDS instances are not supported
+- Placement groups are not supported
+- Hosts can be shared with other ORG accounts using RAM (Resource Access Manager)
 
 ### Dedicated Instances
 
@@ -143,8 +156,6 @@ EC2 instances running on hardware dedicated to a single customer. Hardware can b
 
 Planning in advance for capacity
 
-
-
 Workload: Suitable for short term uninterrupted worloads in a specific AZ
 
 ## Placement Groups
@@ -153,14 +164,17 @@ Allow control over where EC2 instances are placed in AWS infrastructure. Followi
 
 1. Cluster
     - Clusters EC2 instances in a low latency zone in a single AZ (Same rack)
-    - High performance but low availability
+    - High performance but low availability (AZ is locked when the first instance is launched)
     - Use case: Big data job that needs to complete fast or Application that needs extremely low latency & high network throughput
+    - It is a best practice to choose the same type of instance & launch all instances in cluster placement group at once
+    - Can span VPC peers but it impacts performance
 
 2. Spread
     - All EC2 instances are on different hardware across different AZ
     - Reduced risk of simultaneous failure
-    - Limited to 7 instances per AZ per placement group
+    - **Limited to 7 instances** per AZ per placement group
     - Use case: Critical application that needs to maximize availability or critical applications where instances must be isolated from failure.
+    - Spread placement group is not supported for Dedicated Instances or Hosts
 
 3. Partition
     - Spread instances across partitions (Different set of racks) within an AZ.
@@ -168,7 +182,9 @@ Allow control over where EC2 instances are placed in AWS infrastructure. Followi
     - Instances are isolated from rack failure (Instances in a rack do not share instances in other partitions)
     - Can span across multiple AZs in the same region
     - EC2 instances get access to parition using the metadata
-    - Use case: Big data applications, Hadoop, Kafka, Cassandra
+    - Instances can be placed in a specific partition or they can be auto places by EC2
+    - Use case: Large scale parellel processing, Big data , Hadoop, Kafka, Cassandra
+    - Use case: Topology aware applications to contain the impact of failure to part of an application
 
 ## Elastic Network Interfaces - ENI
 
@@ -335,6 +351,13 @@ Following is available with EBS volume encryption.
 - Can't change a volume to NOT be encrypted once it is encrypted
 - OS is not aware of the encryption. Hence no performance loss
 
+#### EBS Optimized
+
+- Historically network on EC2 was shared between data network & EBS storage network
+- EBS Optimized means dedicated capcaity is provided for EBS networking
+- Most instances support it & it is enabled by default
+- Older instances it is supported but costs extra
+
 ### EFS - Elastic File System.
 
 - A managed NFS (Network file system) that can be mounted on many EC2 instances.
@@ -419,3 +442,42 @@ GP2/3 - Upto 16,000 IOPS
 IO1/2 - Upto 64,000 IOPS (IO2 block express - 256,000)
 RAID0+EBS up to 260,000 IOPS (IO1/2)
 More than 260,000 IOPS - instance store (ephemeral)
+
+
+## EC2 Instance Roles
+- Credentials are inside meta-data `iam/security/role-name`
+- Credentials are automatically rotated and always valid
+- Instance Proiles are a wrapper around IAM Role
+- While creating instance role in the console, the instance profile is created automatically (Not created in CLI/Cloudformation)
+- Attaching an instance role to the instance through the console translates to attaching the instance profile
+
+```
+curl http://169.254.169.254/latest/meta-data/iam/security-credentials/
+```
+
+## SSM Parameter Store
+
+- Storage for configuration and secrets
+- Ability to store String, StringList & SecureString
+- Can store Lincese codes, Database Strings, Configs & Password
+- Supports Hierarchies & Versioning
+- Supports Plaintext & Ciphertext (User must have permission to interact with KMS)
+- Public Parameters - Eg: Latest AMI per region
+- Changes can create events that start process in other AWS Products
+
+```
+aws ssm get-parameters --names /rate-my-lizard/dbstring
+```
+
+```
+aws ssm get-parameters-by-path --path /my-cat-app/
+```
+
+## Enhanced Networking
+
+- Uses **SR-IOV** - Network Interface Card (NIC) is virtualizationa aware
+- NO charge - available on most EC2 types
+- Higher IO & Lower host CPU usage
+- More bandwidth
+- High packets per second (PPS)
+- Consistent lower latency

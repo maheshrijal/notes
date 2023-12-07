@@ -116,7 +116,6 @@ nav:
       - Intro: "k8s/intro.md"
       - Architecture: "k8s/architecture.md"
       - kubectl: "k8s/kubectl.md"
-      - Services: "k8s/services.md"
       - Terminology: "k8s/terminology.md"
       - Examples: "k8s/examples.md"
 
