@@ -22,9 +22,13 @@ title: Kubernetes intro, overview & advantages
 - Flexible: cover a wide range of use cases
 
 
-## Kubernetes architecture
+## Kubernetes Terminology
 
-### Pod
+**Cluster** - A deployment of kubernetes. It provides management, orchestration, healing & service access.
+
+**Node** - Resources; Compute to run pods which are placed inside nodes
+
+**Pod** - One or more containers; Smallest unit in kubernetes; often 1 container runs in 1 pod.
 
 - Kubernetes does not run containers directly, it runs pods (Containers encapsulated in pods)
 - Pod is the smallest unit of deployment in kubernetes
@@ -35,20 +39,15 @@ title: Kubernetes intro, overview & advantages
 ```
 kubectl run nginx --image nginx
 ```
+**Service** - Abstraction of pods. Service runs in one or more pods and provides access to containerized application.
 
-1. Creates a Pod
+**Job** - Ad-Hoc task. One or more pods are created for the job until completion.
 
-2. Deploys nginx docker container inside the pod
+**Ingress** - Exposes a external component to the service
 
-### Cluster
+**Ingress Controller** - Used to provide ingress (Eg: AWS LB Ingress Controller uses ALB/NLB)
 
-- A cluster is a set of nodes grouped together
-
-<!-- `kubelet` - Kubernetes agent running on every node.
-
-`control plane` - A set of container that manage the clusters(Also called master). Similar to manager in swarm.
-  - Includes API server, scheduler, controller manager, etcd
--->
+**Persistent Storage/Persistent Volumes** - Volume whose lifecycle lives beyond any 1 pod using it.
 
 ## Controllers
 
