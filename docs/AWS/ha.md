@@ -27,6 +27,11 @@ Load balancers are servers that forward traffic to multiple servers / EC2 instan
 - Enforce stickiness with cookies
 - Enable high availability across zones
 - Seperate public traffic from private traffic.
+- Load balancer require 8+ free IPs per subnet and `/27` subnet to allow scaling.
+
+!!! Note
+
+    EC2 instance does not need to be public to work with LoadBalancer. `/28` is the minimum subnet required for Load Balancer.
 
 ### Elastic Load Balancer - ELB
 A managed load balancer. AWS guarantees uptime, upgrades, maintenance & high availability.
@@ -46,18 +51,21 @@ Health check enable the load balancer to know if instances it forwards traffic t
 
 Protocols: HTTP, HTTPS, WebSocket
 
-- ALB is layer 7 (HTTP)
+- ALB is layer 7 (HTTP/HTTPS)
 - Load balancing to multiple http applications across machines (target Groups)
 - Load balancing to multiple applications on the same machine (containers)
 - Support `redirect from HTTP to HTTPS`
 - Fixed hostname (xxx.region.elb.amazonaws.com)
 - The application servers don't see the IP of the client directly. THe IP is inserted in the header `X-Forwarded-For`, port in the `X-Forwarded-Port` & protocol in the `X-Forwarded-Proto`
+- Does not support other layer 7 protocols (SMTP, SSH, Gaming) and no TCP/UDP/TLS listeners
+- HTTP HTTPS (SSL/TLS) always terminated on the ALB - no unbroken SSL between LoadBalancer & Application. (New SSL connection initiated from LB to application)
+- ALB are slower than NLB
 
 Supports routing traffic to different target groups:
 
 - Routing based on path in URL: `/users` or `/login`
-- Routing based on hostname in URL: `beta.maheshrjl.com` or `maheshrjl.com`
-- Routing based on Query String & Headers: `maheshrjl.com/users?id=5&enabled=false`
+- Routing based on hostname in URL: `beta.maheshrijal.com` or `maheshrijal.com`
+- Routing based on Query String & Headers: `maheshrijal.com/users?id=5&enabled=false`
 - **Target Groups:**
 ```
     - EC2 instances (Can be managed by Auto Scaling Group)
@@ -82,10 +90,15 @@ ALB are a great fit for micro services & container based application. Also, supp
 Protocols: TCP, TLS, UDP
 
 - NLB is layer 4 (Transport)
+- No visibility/understanding of HTTP or HTTPS
+- No header, no cookie, no session stickiness
 - Allows to forward TCP & UDP traffic to your instances
 - Handle millions of traffic per second
-- Health Checks support `TCP`, `HTTP` & `HTTPS`
+- Health checkjust chec ICMP/TCP Handshake. Not application aware.
 - Less latency **~100 ms vs 400ms** for ALB
+- NLBs can have static IP's. Useful for whitelisting
+- Can forward TCP traffic straight to instances without breaking encryption
+- Used with private link to provide services to other VPCs
 - NLB does not have a security group defined
 - **Target Groups:**
 ```
@@ -102,10 +115,12 @@ Protocols: TCP, TLS, UDP
 
 Protocol: IP
 
-Deploy, scale & manage a fleet of 3rd party network virtual appliances in AWS. Eg Usage: `Firewalls, Intrusion Detection & Prevention, Deep Packet Inspection, Payload manipulation.`
+Deploy, scale & manage a fleet of 3rd party appliances in AWS. Eg Usage: `Firewalls, Intrusion Detection & Prevention, Deep Packet Inspection, Payload manipulation.`
 
 - Operates at Layer 3 (Network Layer)
+- Inbound and Outbound traffic (transaparent inspection and protection)
 - Uses **GENEVE Protocol on 6081**
+- GWLB endpoints --> (Traffic enters/leaves via these endpoints)
 - Combines the following functions:
     - **Transparent Network Gateway:** Single entry/exit for network traffic
     - **LoadBalancer:** Distributes traffic to virtual appliances
@@ -183,6 +198,14 @@ Implement `stickiness` so that the same client is always redirected to the same 
 - `Multiple SSL certificates in Load Balancer -> ALB or NLB`
 
 
+## Launch Configuration (LC) & Launch Templates (LT)
+
+Allow you to definethe configuration (AMI, Instance type, Strage, Key Pair, Networking, Security Groups, Userdata & Iam Role) of an EC2 instance in advance.
+
+- Once configured not editable.However, Launch Templates is a newer featrue & has versions.
+- LT provide newer features including T2/T3 unlimited CPU option, place groups,capacity reservations, elastic graphics
+- LC & LT are used as part of Auto Scaling Groups. But, LT can be used to save time when provisioning EC2 instances from the console/CLI
+
 ## Auto Scaling Group
 
 The role of auto scaling group (ASG) is to:
@@ -195,7 +218,7 @@ The role of auto scaling group (ASG) is to:
 - It is possible to scale ASG based on cloudwatch alarms
 
 !!! note
-    ASG are free (You only pay for underlying EC2 instances)
+    ASGs are free (You only pay for underlying EC2 instances)
 
 ASG are created with a **Launch Template**. It Contains information about how to launch EC2 instances
 
@@ -210,27 +233,74 @@ ASG are created with a **Launch Template**. It Contains information about how to
 
 ### Scaling Policies
 
-#### Dynamic Scaling policies
+1. Manual Sacling
+    - Manually adjust the desired capacity
 
-1. Target Tracking Scaling
-
-    - Track the average ASG CPU to stay at a percentage (40%)
-
-2. Simple / Step Scaling
-
-    - Setup your own cloudwatch alarms
-    - When cloudwatch alarm is triggered Eg( CPU > 80%) add 2 units
-
-3. Scheduled Actions
-
+2. Scheduled Scaling
     - Anticipate scaling based on known usage patterns
     - Eg: increase min capacity to 10 at 6 PM on Friday
 
-#### Predictive Scaling
+#### Dynamic Scaling
 
-- Continously forecast load & schedule scaling ahead
-- Good Metrics to scale on: `CPU Utilization`, `Request count per target`, `Average Network In/Out` or any custom policy
+1. Simple scaling
+    - When cloudwatch alarm is triggered Eg( CPU > 80%) add 2 units
+    - Eg: "If CPU utilization above 50 % add +1 to desired if the below 50% remove 1 from desired."
+
+2. Step Scaling
+    - Similar to simple scaling but contains more detailed rules.
+    - React quicker to extreme change in conditions.
+    - Great for variable load.
+    - Eg: At 1 instance the CPU utilization is 50% & there is sudden spike in load add +3 instances.
+
+3. Target Tracking
+    - Target the desired aggregate utilization (CPU, network in/out, request count per target for ALB)
+    - Eg: Track the average ASG CPU to stay at a percentage (40%)
+
+4. Scaling based on SQS - ApproximateNumberOfMessagesVisible
 
 !!! warning
-    After a scaling activity happens, you are in the **cooldown period (Default 300 seconds)**. During the cooldown period ASG will allow for metrics to stabilize.
+    ASGs have a Cooldown Period configuration.It controls how long to wait at the end of a scaling action before starting another action. After a scaling activity happens, you are in the **cooldown period (Default 300 seconds)**. During the cooldown period ASG will allow for metrics to stabilize.
     Use ready-to-use AMI to reduce configuration time in order to be serving requests faster & reduce cooldown period.
+
+### ASG Health Checks
+
+**EC2**: Instance is marked unhealthy if any of these statuses is marked as unhealthy (Stopping, Stopped, Terminated, Shutting Down or Impaired)
+
+**ELB**: Instance should be running & passing the ELB health check
+    - Checks can be application aware for ALB (Layer 7)
+
+**Custom**: Instances marked healthy/unhealthy by an external system
+
+!!! info
+
+    Health check grace period (Default 300 s)- delay before starting health checks
+
+### SSL Offload
+
+**Bridging**
+
+- The default mode for ALB
+- One or more clients makes one or more connections to a LoadBalancer
+- Listener is configured for HTTPS
+- SSL Connection is terminted on the ELB & the ELB needs same certificate for the domain name as the aplication
+- ELB initates a new SSL connection to backend instances
+- Backend instances need SSL certificates and the compute required for cryptographic operations
+
+**Pass-through** (NLB)
+
+- The client connected to LoadBalancer and the LoadBalancer passes the connection to the backend instances.
+- Connection encryption is maintained between client and the backend instances
+- Instances still need the SSL certificates installed, but the LoadBalacner does not need it
+- Listener is configured for TCP.
+
+**Offload**
+
+- Clients connect to the LoadBalancer with & the connection is terminted on the LoadBalancer
+- Listener is configured for HTTPS
+- SSL Connection is terminted on the ELB and the ELB initiates connection to the backend instances using HTTP
+- No certifcates or cryptographic requirement for backend instances
+
+### Connection Stickiness
+
+- Stickiness generates a cookie `AWSALB` which locks the device to a single backend instances for a duration (1 second to 7 days)
+- Change to session stickiness will occur when either the instances fails or the cookie expires
