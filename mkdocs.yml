@@ -2,8 +2,8 @@ site_name: Mahesh Rijal - Notes
 site_description: Short snippets/scripts for quick reference, mostly related DevOps & Linux.
 site_url: https://notes.maheshrijal.com/
 site_author: Mahesh Rijal
-repo_url: https://github.com/maheshrjl/notes
-repo_name: maheshrjl/notes
+repo_url: https://github.com/maheshrijal/notes
+repo_name: maheshrijal/notes
 edit_uri: edit/main/docs/
 copyright: Copyright &copy;2023 <a href="https://maheshrijal.com" target="_blank" rel="noopener"> Mahesh Rijal</a>
 
