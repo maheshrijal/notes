@@ -97,6 +97,7 @@ nav:
       - Cloudformation: "AWS/cloudformation.md"
       - Availability & Scalability: "AWS/ha.md"
       - Encryption: "AWS/encryption.md"
+      - Lambda: "AWS/lambda.md"
 
   - Docker:
       - Docker Info: "docker/docker-info.md"
