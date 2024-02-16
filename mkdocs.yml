@@ -79,10 +79,6 @@ nav:
       - AdHoc Commands: "ansible/adhoc.md"
       - Snippets: "ansible/snippets.md"
   - AWS:
-      - "CLI":
-          - EC2: "AWS/CLI/EC2.md"
-          - S3: "AWS/CLI/S3.md"
-          - IAM: "AWS/CLI/IAM.md"
       - Infrastructure: "AWS/infrastructure.md"
       - IAM: "AWS/iam.md"
       - EC2: "AWS/ec2.md"
@@ -92,12 +88,15 @@ nav:
       - Route 53: "AWS/route53.md"
       - Elasticache: "AWS/elasticache.md"
       - Containers: "AWS/containers.md"
-      - SQS: "AWS/sqs.md"
       - CDN: "AWS/cdn.md"
       - Cloudformation: "AWS/cloudformation.md"
       - Availability & Scalability: "AWS/ha.md"
       - Encryption: "AWS/encryption.md"
-      - Lambda: "AWS/lambda.md"
+      - Serverless: "AWS/serverless.md"
+      - "CLI":
+          - EC2: "AWS/CLI/EC2.md"
+          - S3: "AWS/CLI/S3.md"
+          - IAM: "AWS/CLI/IAM.md"
 
   - Docker:
       - Docker Info: "docker/docker-info.md"
