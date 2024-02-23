@@ -175,7 +175,7 @@ Use cases:
 - Cache size 500 MB to 237 GB
 
 
-## Amazon SQS (Simple Queue Service)
+## Amazon SQS
 
 - Public, Fully Managed, Highly Avaialable Queues - Standard or FIFO
 - **Limitation of 256KB per message** - link to object for large data
@@ -184,14 +184,189 @@ Use cases:
 - Dead-Letter queues can be used for problematic messages
 - ASGs can scale & Lambdas invoke based on queue length
 
-<!-- - One of AWS oldest services
-- Fully managed message queuing service (Application Decoupling)
-- Unlimited throughput, unlimited number of messages in the queue
-- Low latency (< 10ms on publish & receive)
-- **Limitation of 256KB per message**
+!!! note
+
+    SNS topic can be placed before SQS topics in an application architecture so that the same message can be sent to different SQS queues based on the requirement. (**FANOUT Architecture**)
+    Eg:
+
+        1. Video uploaded to S3
+        2. SNS triffers a notification to 3 different SQS queues(FANOUT)
+        3. The 3 different SQS queues send the message to worker pools to transcode the video based on quality (1080p, 720p, 480p)
+
+- Short polling (immediate) vs Long (waitTimeSeconds) polling
+- Ecnryption at rest (KMS) & in transit
+- Access to queue is based on identity policies or queue policies(Queue policy is just like resource policy & can allow access from external account only)
+
+### Standard Queues
+
+- At-least-once delivery, no guarantee on order of messages
+- Scalabale, as wide as required Near Unlimited TPS
+- Best-Effort Ordering, no rigid prevervation of message order
+- Use Case: Decoupling worker pools, batch for future processing
+
+### FIFO Queues
+
+- Ecxactly once delivey, guaranteed ordering
+- 3000 messages per second with batching or up to 300 messages per second without batching
+- FIFO queues will have a `.fifo` suffix
+
+### Billing
+
+- Billed on `requests`
+- 1 request can receive `1-10` messages up to 64 KB total
+
+### Delay Queues
+
+- Postpone delivery of messages to consumers
+- Delay Queue has a `DelaySeconds` set. Messages added to the queue will be **invisible for DelaySeconds** (default 0, max 15 minutes)
+- `DelaySeconds` must be value higher than 0 for queue to be a Delay Queue
+- Message timers allow a **per-message invisibility** to be set, overriding any queue setting. MIN=0, Max=15 (Not supported on FIFO queues)
+
+### Dead=Letter Queues
+
+- `ReceiveCount` attribute is incremented every time a message is received in the Queue
+- **redrive-policy** specifies the Source Queue, the Dead-Letter Queue and the conditions where messages will be moved from  one to the other (Defined via maxReceiveCount)
+- When ReceiveCount > maxReceiveCount & message isn't deleted, it's moved to the dead-letter queue
+- Enqueue-timestamp(time when message was introduced to the queue) is unchanged when message movied to DLQ. Retention period of a DLQ is generally longer than the source queue.
+
+
+## Kinesis Data Streams
+
+- Kinesis is scalable streaming service (designed to ingest data)
+- Producers send data to kinesis stream
+- Streams can scale from low to near infinite data rates
+- Public service & HA by design
+- Streams store a **24-hour** moving winodw of data (Data older than 24H is discarded)
+- Window can be increased to a max of **365 days (additional cost)**
+- Multiple producers can send data & multiple consumers can access data from the moving window
+- Kinesis uses a **Shard Architecture**. Shards are added to the stream as required. Each **shard provides 1MB ingestion & 2MB of consumption per second**
+- Data is stored on a stream using Kinesis Data Record (Max: 1MB)
+
+### SQS vs Kinesis
+
+**SQS**
+
+- 1 production group, 1 consumption group
+- Decoupling & Asynchronous communications
+- No persistence of messages, no concept of window
+
+**Kinesis**
+
+- Designed for huge scale ingestion
+- Support multiple consumers & a rolling window
+- Data ingestion, Analytics, Monitoring, App clicks, Mobile click streams
+
+### Kinesis Data FireHose
+
+- Fully Managed service to load data for data lakes, data store and analytics services
+- Persists data beyond the rolling window of kinesis data streams
+- Automatic scaling fully serverless & resilient
+- **Near Real Time** delivery (~60 seconds) (Kinsesis is real time)
+- Supports transformation of data on the fly using lambda (can add more latency)
+- Billed on data volume through firehose
+- FireHose can accept data from producers or obtain data fom Kinesis data stream
+- FireHose offers near realtime delivery i.e. delivery when buffer size amounts to 1MB or buffer interval passes 60 seconds
+- Firehose can transform data using Lambda & write to HTTP, Splunk, ElasticSearch and S3. For writing directly to RefShift, it uses an intermediate S3 bucket.
+
+Valid Destination for  Data FireHose: HTTP, Splunk, Redshift, ElasticSearch, S3
+
+Use case: Persistence for data coming into kinesis stream, Store data in different format
+
+### Kinesis Data Analytics
+
+- Real time processing of data using **SQL**
+- Ingests from Kinesis Data Streams or FireHose
+- Destinations: FireHose (S3, RefShift, ElasticSearch & Splunk)[], AWS Lambda, Kinesis Data Steams
+- RealTime for AWS Lambda, Kinesis Data Stream, Near Real Time for FireHose
+- Pay for data proceessed
+
+- Use cases:
+    - Streaming data needing real-time SQL processing
+    - Time-series analytics elections/e-sports
+    - Real-time dashboard - leaderboards for games
+    - Real-time metrics - Security & Response for teams
+
+### Kinesis Video Streams
+
+- Ingest live video data from producers
+- Producers: Security Cameras, SmartPhones, cars, drones, time-serialized audio, thermal, depth and RADAR data
+- Consumers can access data frme-by-frame or as needed
+- Can persist and encrypt (in-transit & at rest) data
+- **CANNOT access data ingested by Kinesis data streams from any external service/storage**. Can be accessed via APIs only
+- Integrates with other AWS Service eg: Rekognition and Connect
+- Kinesis data stream(Output by Rekognition) receives analysis data of the video, and vs the face collection identifying any Detected or Matched faces
+
+## Amazon Cognito
+
+- Provides Authentication, Authorization & user management for web/mobile apps
+
+### User Pools
+
+- Sign-in get a JSON Web Token (JWT) [Most AWS Services do not accept JWT]
+- USer directory management and profiles, sign up & sign in (customizable UI), MFA and other features
+- Provide social sign in using identities provided by facebook, google, apple as well as SAML providers
+- **User Pool tokens cannot be used to access AWS resources**
+- USer Pool token used as a proof of authentication
+- User Pool Tokens can grant access to APIs via Legacy lambda custom authorizers and now directly via API Gateway
+
+### Idenitity Pools
+
+- Exchange a external identity for a set of temporary AWS credentials
+- Allow you to offer access to Temporary AWS Credentials
+- Unauthenticated Identities - Guest access to AWS resources
+- Federated Identities - SWAP Google, Facebook, twitter SAML2.0 and **User Pool** for short term AWS credentials to access AWS resources
+- Cognito assumes an IAM Role defined in Identity Pool and returns temporary AWS credentials that can be used to access AWS resources
 
 !!! note
-    Default message retention period is 4 days, max is 14 days
 
-- Can have duplicate messages (at-least-once delivery)
-- Can have out-of-order messages (best effort ordering) -->
+    The swapping of any external ID provider token for AWS Credemtials is known as Web Identity Federation
+
+
+## AWS Glue
+
+- Serverless ETL (Extract, Transform & Load)
+- There as a AWS service called datapipeline (Which can do ETL) but, it uses servers in the AWS Account (EMR)
+- Moves and transform data between source and destination
+- Crawls data source and generates the AWS Glue Data catalog
+- Data Sources: Stores: S3, RDS, JDBC Compatible, DynamoDB
+- Data Sources: Streams: Kinesis Data Stream & Apache Kafka
+- Data Targets: S3, RDS, JDBC Databases
+
+### Data Catalog
+
+- Persistent metadata about data sources in a AWS region
+- One catalog per region per account
+- Avoids data silos
+- Amazon Athena, RedShift Spectrum, EMR & AWS Lake formation all use Data Catalog
+- Data is discovered by configuring crawlers for data sources and givin them credentials
+- Crawlers connect to data stores, determine schema and create metadata in the data catalog
+- Data Catalog can be used with AWS Glue to perform ETL
+
+## Amazon MQ
+
+- SNS & SQS are AWS services which utilize AWS APIs (Public Service, Highly Scalable, AWS Integrated)
+- Open-source message broker
+- Based on Managed Apache ActiveMQ
+- Protocols: **AMQP, MQTT, OpenWire & STOMP**
+- Provides QUEUES and TOPICS
+- Provides One-to-One or One-to-Many messaging architecture
+- Provides a Single Instances (Testing/Dev for cheap) or HA Pair (Active/Standby)
+- VPC Based service - **Not a Public Service** - Private Networking is required
+- No AWS native integrations
+
+!!! tip
+
+    Use SNS or SQS if AWS Integration is required (logging, permissions, encryption, service integration)
+
+## Amazon
+
+- Fully-Managd **Integration** service (Middleware)
+- Exchange data between applications (connectors) using flows
+- Sync data across applications or aggregate data from different sources
+- Uses Public endpoints, but works with PrivateLink to access private sources
+- AppFlow connections can use Custom Connector SDK (build your own connector)
+- Cnnections store configuration & credentials to access applications
+- Connections can be reused across many flows
+- Eg: Contact records from salesforce => Refshit
+- Eg: Support ticket from Zendesk => S3
+- Eg: Slack => Redshift
