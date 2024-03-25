@@ -100,3 +100,66 @@ Eg: 10.16.16.0/20 (10.16.16.0 -> 10.16.31.255)
 !!! tip
 
     For IPv6 connectivity we can add a `::/0` & point it to internet gateway for bi-directional connectivity.
+
+## VPC Flow Logs
+
+- Flow logs only capture packet metadata not packet contents
+- Flow logs work by attaching virtual monitors to
+    1. Attached to VPC - All ENIs in that VPC
+    2. Subnet - All ENI in that subnet
+    3. ENIs directly
+- Flow logs are **not realtime**
+- Log destinations: S3 (Query S3 logs using Athena) or CloudWatch Logs
+- ICMP: 1, TCP: 6, UDP: 17
+- Traffic that is not logged: Metadata service (192.254.169.254, 192.254.169.123), DHCP, Amazon DNS Server, Amazon Windows License Server
+
+## Egress-Only Internet Gateway
+
+- NAT gatway allowes private IPv4 addresses to access public networks without allowing externally initated connections
+- With IPv6 all IPs are public therefore Internet Gateway would allow all IPv6 connections IN and OUT
+- **Egress-Only igw is boutbound-only for IPv6** networks
+- HA by default across all AZs in the region
+- Default IPv6 Route of `::/0` should be added to route table with egress only internet gateway as target
+
+## VPC Endpoints
+
+### Gateway Endpoint
+
+- Provide private access to S3 & DynamoDB
+- Normally we would need internet gateway to access S3 & DynamoDB since these services reside in AWS public zone
+- Prefix List is added to route table as a target to Gateway Endpoint
+- **HA across AZs in a region** by default
+- Gateway endpoints are only **accessible within the VPC**
+- Endpoint policy is used to control what it can access (Eg: specific S3 buckets)
+- Regional service (Can't access cross-region services)
+
+Use cases:
+
+1. Private VPC which needs access to public resources (S3/DynamoDB)
+2. Prevent Leaky Buckets - S3 buckets can be set to private only by allowing access only from gateway endpoint
+
+### Interface Endpoint
+
+- Provide private access to public AWS services
+- Interface endpoints started supporting S3 recently, but DynamoDB is still supported only through Gateway Endpoint
+- Interface Endpoints are added to specific subnets in a VPC - ENI and are **not HA** by default.'
+- 1 interface endpoint is deployed to 1 AZ and there is no resilience in case of failures
+- For HA, one interface endpoint is added to one subnet per AZ in the VPC
+- Network access is controlled via Security Groups
+- Endpoint Policies: restrict what can be done with the endpoint
+- Support **TCP & IPv4 only**
+- Uses **PrivateLink** in the backend
+- Endpoint provides multiple DNS endpoints (DNS name will resolve to private IP address of the services)
+    1. Regional DNS name
+    2. Zonal DNS name
+- Applications can either use the above 2 DNS names or use **PrivateDNS(associate route 53 private hosted zone with your VPC)** which overrides the default DNS for services which means applications can use interface endpoitns without any modification. This is now enabled by default
+
+## VPC Peering
+
+- Direct encrypted network link between **two VPCs only**
+- Works same/cross-region and same/cross-account
+- Public hostnames of services in the peered VPC resolve to private IPs (Optional)
+- **Same region SG's** can reference peered VPC SG Ids
+- VPC Peering is not transitive
+- Routing configuration is needed but, traffic should be allowed in SGs & NACLs
+- VPC Peering connections cannot be created where there is overlap in the VPC CIDRs
