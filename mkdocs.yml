@@ -92,7 +92,9 @@ nav:
       - Cloudformation: "AWS/cloudformation.md"
       - Availability & Scalability: "AWS/ha.md"
       - Encryption: "AWS/encryption.md"
+      - Security: "AWS/security.md"
       - Serverless: "AWS/serverless.md"
+      - Hybrid Environments: "AWS/hybrid-environments.md"
       - "CLI":
           - EC2: "AWS/CLI/EC2.md"
           - S3: "AWS/CLI/S3.md"
