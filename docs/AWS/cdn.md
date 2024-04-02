@@ -185,3 +185,12 @@ AWS Global Accelerator is a service that improves the availability and performan
     - Transits over AWS backbone to 1 or more locations
     - Global Accelerator is a network product. Can be used for NON HTTP/S (TCP/UDP) whreas CloudFront only caches only HTTP & HTTPS content
     - **TCP/UDP: Global Accelerator**, **HTTP/HTTPS: CloudFront**
+
+## AWS Local Zones
+
+- **1 Zone**. So no built in resilience
+- Like an AZ, but near customer location so lower latency
+- Not all products support Local Zones. Many are opt in with limitations
+- DX to local zone is supported (Extreme performance needs)
+- Utilise parent region. Eg: EBS snapshots are sent to parent zone
+- Use local zones when you need the highest performance

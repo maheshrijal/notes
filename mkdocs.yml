@@ -5,7 +5,7 @@ site_author: Mahesh Rijal
 repo_url: https://github.com/maheshrijal/notes
 repo_name: maheshrijal/notes
 edit_uri: edit/main/docs/
-copyright: Copyright &copy;2023 <a href="https://maheshrijal.com" target="_blank" rel="noopener"> Mahesh Rijal</a>
+copyright: Copyright &copy;2024 <a href="https://maheshrijal.com" target="_blank" rel="noopener"> Mahesh Rijal</a>
 
 theme:
   name: material
@@ -47,15 +47,14 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Light mode
-  shortcuts:
-    next: 78 # n
-    previous: 80 # p
-    search: 83 # s
 plugins:
   - search:
       lang: en
   - minify:
       minify_html: true
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
 extra:
   social:
     - icon: fontawesome/solid/paper-plane
@@ -84,6 +83,7 @@ nav:
       - EC2: "AWS/ec2.md"
       - S3: "AWS/s3.md"
       - RDS: "AWS/rds.md"
+      - NOSQL: "AWS/nosql.md"
       - VPC: "AWS/vpc.md"
       - Route 53: "AWS/route53.md"
       - Elasticache: "AWS/elasticache.md"
@@ -95,6 +95,7 @@ nav:
       - Security: "AWS/security.md"
       - Serverless: "AWS/serverless.md"
       - Hybrid Environments: "AWS/hybrid-environments.md"
+      - Machine Learning: "AWS/machine-learning.md"
       - "CLI":
           - EC2: "AWS/CLI/EC2.md"
           - S3: "AWS/CLI/S3.md"
@@ -137,7 +138,6 @@ nav:
 markdown_extensions:
   - admonition
   - tables
-  - meta
   - attr_list
   - def_list
   - pymdownx.tasklist
@@ -146,7 +146,6 @@ markdown_extensions:
       use_pygments: true
   - pymdownx.magiclink
   - pymdownx.superfences
-  - pymdownx.tabbed
   - pymdownx.snippets
   - toc:
       permalink: true
