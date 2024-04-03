@@ -11,7 +11,7 @@ date: 2023-03-20
 ## CloudFormation Cost
 
 - Each resource within a stack is tagged with a identifier called a stack ID so you can track the cost of each stack
-- Cost of resource can be estimated using the CloudFormation tempalte
+- Cost of resource can be estimated using the CloudFormation template
 - **Saving strategy**: In Dev, you can delete the stack at 5PM and recreate it at 9AM the next day
 
 ## Productivity
@@ -21,4 +21,4 @@ date: 2023-03-20
 - Declearative approach to infrastructure: No need to figure out the order of creation
 
 !!! warning
-    `Resources` section in a Cloudformation tempalte is the only mandatory section. However, If both `Description` & `AWSTemplateFormatVersion` are present in a template, the `Description` must be below the `AWSTemplateFormatVersion`
+    `Resources` section in a Cloudformation template is the only mandatory section. However, If both `Description` & `AWSTemplateFormatVersion` are present in a template, the `Description` must be below the `AWSTemplateFormatVersion`
