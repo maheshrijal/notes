@@ -137,3 +137,43 @@ date: 2023-04-02
 - Reduces database loads (For heavy reads, offloading to cache can reduce database cost)
 - Can be used to store Session Data (Stateless Servers)
 - Using ElastiCache requires application code changes!!
+
+### ElastiCache - Redis vs MemcacheD
+
+**Memcached**
+
+- Simple data strutctures (string)
+- No replication
+- Multiple Nodes (Sharding)
+- No backup
+- Multi-threaded (better performance for multi core CPUs)
+
+**Redis**
+
+- Advanced data structures (list, sets, sorted sets,hashes etc)
+- Multi-AZ replication
+- Replication (Scale Reads)
+- Backup & Restore
+- Support for transactions (all operations work or none work if any fails)
+
+## Amazon Redshift
+
+- Petabyte scale Data Warehouse
+- OLAP (column based) not OLTP (row/transactions)
+- Pay as you use. Similar to RDS
+- Direct Query S3 using **Redshift Spectrum**
+- Direct Query other DB using **Federated Query**
+- Server based (not serverless)
+- **One-AZ** in a VPC - not HA
+- **Leader Node** - Query input, planning & aggregation
+- **Compute Node** - performing queries of data
+- VPC security, IAM Permissions, KMS at rest encryption, CW monitoring
+- Redshift **Enhanced VPC Routing** - by default uses public routes for traffic, but when Enhanced VPC Routing is enabled, traffic is routed based on VPC networking (SG, NACL, VPC Gateways)
+
+### Redshift Resilience and Recovery
+
+- **Automatic incremental backups to S3** occur every ~8 hours or 5 GB of data & by default have 1-day retention (configurable up to  365 days)
+- Manual snapshots performed manually, stored in S3 and do not expire unless deleted manually
+- Redshift backups into S3 protects against AZ failures
+- Restoring from snapshots creates a brand new cluster
+- Redshift can be configured to copy snapshots to another AWS region for DR - with a seperate configurable retention period
