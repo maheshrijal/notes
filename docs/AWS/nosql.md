@@ -129,32 +129,6 @@ date: 2023-04-02
 - AWS **Glue Data Catalog** & **Web Server Logs**
 - **Athena Federated Query** can query other data source (Can query non S3 data sources)
 
-## ElastiCache
-
-- In-memory database. High performance
-- Managed Redis or Memcached as a service
-- Can be used to cache data for READ HEAVY workloads with low latency requirements
-- Reduces database loads (For heavy reads, offloading to cache can reduce database cost)
-- Can be used to store Session Data (Stateless Servers)
-- Using ElastiCache requires application code changes!!
-
-### ElastiCache - Redis vs MemcacheD
-
-**Memcached**
-
-- Simple data strutctures (string)
-- No replication
-- Multiple Nodes (Sharding)
-- No backup
-- Multi-threaded (better performance for multi core CPUs)
-
-**Redis**
-
-- Advanced data structures (list, sets, sorted sets,hashes etc)
-- Multi-AZ replication
-- Replication (Scale Reads)
-- Backup & Restore
-- Support for transactions (all operations work or none work if any fails)
 
 ## Amazon Redshift
 

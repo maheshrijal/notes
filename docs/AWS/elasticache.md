@@ -7,11 +7,17 @@ date: 2023-02-02
 
 ## Amazon ElastiCache
 
-- Elasticache is used to get managed Redis or Memcached.
+- Managed Redis or Memcached as a service
 - Caches are in-memory databases with really high performance, low latency.
 - Elasticache helps reduce load off of databases for read intensive workloads.
 - Helps make Applications Stateless
 - It is a managed service. AWS takes care of OS maintenance / patching, optimization, setup, configuration, monitoring, failure recovery & backups
+- In-memory database. High performance
+- Can be used to cache data for READ HEAVY workloads with low latency requirements
+- Reduces database loads (For heavy reads, offloading to cache can reduce database cost)
+- Can be used to store Session Data (Stateless Servers)
+- Using ElastiCache requires application code changes!!
+
 
 !!! warning
     Using Elasticache involves heavy application code changes
@@ -38,15 +44,20 @@ date: 2023-02-02
 - Data Durability using AOF persistence
 - Backup & Restore features
 - IAM Authentication is supported
+- Advanced data structures (list, sets, sorted sets,hashes etc)
+- Multi-AZ replication
+- Support for transactions (all operations work or none work if any fails)
+
 
 ### Memcached
 
 - Multi-node for partitioning of data (Sharding)
-- No high availability (Replication)
+- No high availability & Replication
 - Non persistent
 - No backup & restore
-- Multi-threaded architecture
 - Only username/password supported
+- Simple data structures (string)
+- Multi-threaded (better performance for multi core CPUs)
 
 !!! note
     Redis for HA, backup & Memcached when you can afford to loose the data.

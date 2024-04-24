@@ -194,12 +194,14 @@ Use case:
 ### Multi-Master Write
 
 **Default Aurora**
-- Default Aurora mode is Single-Master(One R/W and + 0 Read Only replicas)
+
+- Default Aurora mode is Single-Master(One Read/Write + 0 Read Only replicas)
 - Cluster Endpoint is used for read/write and read endpoint used for load balancing reads
 - Failover takes time - replica promoted to read/write
 
 **Multi-Master**
-- All instances are capacble of read/write by default
+
+- All instances are capable of read/write by default
 - No load balanced cluster endpoint. Application can connect to one or both of the cluster endpoints
 - Use case: Fault Tolerance
 - Failover events can happen inside the application itself
@@ -208,7 +210,7 @@ Use case:
 
 ## RDS Proxy
 
-- Fully managed proxy for RDS proxy - serverless, autoscaling, highly available (Multi-AZ) by default
+- Fully managed proxy for RDS - serverless, autoscaling, highly available (Multi-AZ) by default
 - Allows apps to **pool & share DB connections** established with the DB (Proxy maintains a long term connection pool)
 - Improve database efficiency by reducing the stress on DB resources (CPU/RAM). Also minimizes open connections & timeouts
 - Reduces RDS & Auora failover time by up to 66% in case of failover
@@ -220,6 +222,7 @@ Use case:
 - Abstracts failure away from your applications
 
 When to use RDS proxy:
+
     - Application connection failing with too many connection errors
     - DB instances using T2/T3 (small/burst) instances
     - AWS Lambda - time saved per connection & reuse & IAM auth
@@ -228,11 +231,11 @@ When to use RDS proxy:
     - RDS proxy can reduce time for failover and make it transparent to the application
 
 
-## Databae Migartion Service (DMS)
+## Database Migartion Service (DMS)
 
 - A managed database migration service
 - Runs a replication instance
-- Source and destination endpoiunts whgich point at source and target DBs
+- Source and destination endpoints point at source and target DBs
 - One of endpoints must be running on AWS
 
 Job Types:
@@ -252,7 +255,7 @@ Job Types:
 
     DMS can utilize snowball for large scale DB migrations with SCT.
 
-    1. Use SCT to extract data locally & mve to snowball device
+    1. Use SCT to extract data locally & move to snowball device
     2. Ship the device back to AWS. They load onto an S3 bucket
     3. DMS migrates from S3 into the target store
     4. Change Data Capture (CDC) can capture changes & via S3 intermediary they are also written to the target database
