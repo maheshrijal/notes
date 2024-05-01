@@ -82,6 +82,7 @@ nav:
       - RDS: "AWS/rds.md"
       - NOSQL: "AWS/nosql.md"
       - VPC: "AWS/vpc.md"
+      - Logging: "AWS/logging.md"
       - Route 53: "AWS/route53.md"
       - Elasticache: "AWS/elasticache.md"
       - Containers: "AWS/containers.md"
@@ -93,10 +94,7 @@ nav:
       - Serverless: "AWS/serverless.md"
       - Hybrid Environments: "AWS/hybrid-environments.md"
       - Machine Learning: "AWS/machine-learning.md"
-      - "CLI":
-          - EC2: "AWS/CLI/EC2.md"
-          - S3: "AWS/CLI/S3.md"
-          - IAM: "AWS/CLI/IAM.md"
+      - "CLI": "AWS/cli.md"
 
   - Docker:
       - Docker Info: "docker/docker-info.md"
@@ -111,6 +109,7 @@ nav:
       - VIM: "linux/vim.md"
       - WSL2: "linux/wsl.md"
       - Cron: "linux/cron.md"
+      - Grep: "linux/grep.md"
 
   - Kubernetes:
       - Intro: "k8s/intro.md"

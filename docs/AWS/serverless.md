@@ -361,7 +361,7 @@ Use case: Persistence for data coming into kinesis stream, Store data in differe
 
     Use SNS or SQS if AWS Integration is required (logging, permissions, encryption, service integration)
 
-## Amazon
+## Amazon AppFlow
 
 - Fully-Managd **Integration** service (Middleware)
 - Exchange data between applications (connectors) using flows

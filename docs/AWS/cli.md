@@ -1,58 +1,77 @@
+---
+title: AWS CLI Commands
+---
 
-# AWS S3
+# AWS CLI Commands
 
-## List
+## EC2
 
-##### List all bucket contents
+### List
+
+```
+aws ec2 describe-instances
+```
+
+### Metadata
+
+```
+curl -s http://169.254.169.254/latest/meta-data/
+```
+
+## S3
+
+### List
+
+**List bucket contents**
 ```
 aws s3 ls
 ```
 
-##### List recursively
+**List recursively**
 
 ```
 aws s3 ls s3://YOUR_BUCKET --recursive --human-readable --summarize
 ```
 
-## Copy
+### Copy
 
-##### Copy file to S3
+**Copy file to S3**
 
 ```
 aws s3 cp MyFolder s3://bucket-name — recursive [–region us-west-2]
 
 ```
 
-##### Copy file from S3
+**Copy file from S3**
 
 ```
 aws s3 cp s3://my-bucket/ <local directory path> --recursive --exclude "*" --include "<prefix>*"
 ```
 
 
-## Remove
+### Remove
 
-##### Delete bucket with all of it's contents
+**Delete bucket with all of it's contents**
 
 ```
 aws s3 rb s3://bucket-name –force
 ```
 
-##### Selectively delete bucket contents
+**Selectively delete bucket contents**
 
 ```
 aws s3 rm s3://bucket-name --recursive --exclude "*" --include "*.tmp"
 ```
 
-##### Empty the bucket
+**Empty the bucket**
 
 ```
 aws s3 rm s3://bucketname --recursive
 ```
 
-## Share
+### Share
 
-##### Pre sign a S3 object URL
+**Pre sign a S3 object URL**
 
 ```
 aws s3 presign s3://DOC-EXAMPLE-BUCKET1/mydoc.txt --expires-in 604800
@@ -67,10 +86,19 @@ aws s3 presign s3://DOC-EXAMPLE-BUCKET1/mydoc.txt --expires-in 604800 --region a
 !!! note "S3 Endpoints"
     S3 endpoint URLs are in the format: `http://bucket-name.s3-website.Region.amazonaws.com`
 
-## Download 
+### Download
 
 Downlad a S3 file with Pre-Signed URL
 
 ```
 wget -O filename ""
+```
+
+## IAM
+
+### List
+
+**List all IAM Users**
+```
+aws iam list-users
 ```
