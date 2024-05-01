@@ -256,12 +256,11 @@ Use cases:
 - Support multiple consumers & a rolling window
 - Data ingestion, Analytics, Monitoring, App clicks, Mobile click streams
 
-### Kinesis Data FireHose
+### Amazon Data Firehose
 
 - Fully Managed service to load data for data lakes, data store and analytics services
 - Persists data beyond the rolling window of kinesis data streams
 - Automatic scaling fully serverless & resilient
-- **Near Real Time** delivery (~60 seconds) (Kinsesis is real time)
 - Supports transformation of data on the fly using lambda (can add more latency)
 - Billed on data volume through firehose
 - FireHose can accept data from producers or obtain data fom Kinesis data stream
@@ -271,6 +270,10 @@ Use cases:
 Valid Destination for  Data FireHose: HTTP, Splunk, Redshift, ElasticSearch, S3
 
 Use case: Persistence for data coming into kinesis stream, Store data in different format
+
+!!! warning
+
+    Kinesis is real-time, delivery (~60 seconds) & Data Firehose in near real time
 
 ### Kinesis Data Analytics
 
