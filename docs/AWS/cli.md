@@ -48,6 +48,12 @@ aws s3 cp MyFolder s3://bucket-name — recursive [–region us-west-2]
 aws s3 cp s3://my-bucket/ <local directory path> --recursive --exclude "*" --include "<prefix>*"
 ```
 
+**Copy Bucket to Another Bucket**
+
+```
+aws s3 sync s3://source-bucket/ s3://destination-bucket/
+```
+
 
 ### Remove
 
