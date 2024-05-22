@@ -95,6 +95,7 @@ nav:
       - Hybrid Environments: "AWS/hybrid-environments.md"
       - Machine Learning: "AWS/machine-learning.md"
       - "CLI": "AWS/cli.md"
+      - "Recap": "AWS/recap.md"
 
   - Docker:
       - Docker Info: "docker/docker-info.md"
@@ -135,6 +136,7 @@ markdown_extensions:
   - admonition
   - tables
   - attr_list
+  - md_in_html
   - def_list
   - pymdownx.tasklist
   - pymdownx.highlight:
