@@ -242,6 +242,19 @@ Use cases:
 - Kinesis uses a **Shard Architecture**. Shards are added to the stream as required. Each **shard provides 1MB ingestion & 2MB of consumption per second**
 - Data is stored on a stream using Kinesis Data Record (Max: 1MB)
 
+Amazon Kinesis Data Streams enables real-time processing of streaming big data. It provides ordering of records, as well as the ability to read and/or replay records in the same order to multiple Amazon Kinesis Applications. The Amazon Kinesis Client Library (KCL) delivers all records for a given partition key to the same record processor, making it easier to build multiple applications reading from the same Amazon Kinesis data stream (for example, to perform counting, aggregation, and filtering).
+
+AWS recommends Amazon Kinesis Data Streams for use cases with requirements that are similar to the following:
+
+- Routing related records to the same record processor (as in streaming MapReduce). For example, counting and aggregation are simpler when all records for a given key are routed to the same record processor.
+
+- Ordering of records. For example, you want to transfer log data from the application host to the processing/archival host while maintaining the order of log statements.
+
+- Ability for multiple applications to consume the same stream concurrently. For example, you have one application that updates a real-time dashboard and another that archives data to Amazon Redshift. You want both applications to consume data from the same stream concurrently and independently.
+
+- Ability to consume records in the same order a few hours later. For example, you have a billing application and an audit application that runs a few hours behind the billing application. Because Amazon Kinesis Data Streams stores data for up to 365 days, you can run the audit application up to 365 days behind the billing application.
+
+
 ### SQS vs Kinesis
 
 **SQS**
