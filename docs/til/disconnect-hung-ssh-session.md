@@ -1,6 +1,11 @@
+# Redirecting...
 
----
-title: Kill unresponsive/hung ssh session
----
+<script>
+  const target = new URL('https://maheshrijal.com/til/hung-ssh-session');
+  target.search = window.location.search;
+  target.hash = window.location.hash;
+  window.location.replace(target.toString());
+</script>
+<meta http-equiv="refresh" content="0; url=https://maheshrijal.com/til/hung-ssh-session">
 
-press `Enter` key followed by `~.` (tilde, period).
+If you are not redirected automatically, open [https://maheshrijal.com/til/hung-ssh-session](https://maheshrijal.com/til/hung-ssh-session).

@@ -1,7 +1,11 @@
----
-title: Difference between '#!/bin/bash' and '#!/usr/bin/env bash'
-date: 2024-06-03
----
+# Redirecting...
 
-- `#!/usr/bin/env bash` searches `PATH` for `bash` whereas in `#!/bin/bash` path to `bash` must be located in `/bin`
-- Use `#!/usr/bin/env bash` for more portability.
+<script>
+  const target = new URL('https://maheshrijal.com/til/shebang');
+  target.search = window.location.search;
+  target.hash = window.location.hash;
+  window.location.replace(target.toString());
+</script>
+<meta http-equiv="refresh" content="0; url=https://maheshrijal.com/til/shebang">
+
+If you are not redirected automatically, open [https://maheshrijal.com/til/shebang](https://maheshrijal.com/til/shebang).
