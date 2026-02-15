@@ -1,0 +1,3 @@
+/til https://maheshrijal.com/til 301!
+/til/ https://maheshrijal.com/til 301!
+/til/* https://maheshrijal.com/til/:splat 301!
