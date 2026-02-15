@@ -122,15 +122,7 @@ nav:
 
   - Snippets: "snippets.md"
 
-  - TIL:
-      - "til/index.md"
-      - "til/shebang.md"
-      - "til/recursively-fetch-linux-version-k8s.md"
-      - Terminate hung SSH session: "til/disconnect-hung-ssh-session.md"
-      - Label commit messages with Conventional Commits: "til/using-conventional-commits.md"
-      - Copy files Recursively from Docker: "til/recursive-copy-docker.md"
-      - Git Push asking Username & Password: "til/git-push-requires-username-password.md"
-      - Duplicate Browser Tab: "til/duplicate-the-current-browser-tab.md"
+  - TIL ↗: https://maheshrijal.com/til
 
   - Blog ↗: https://maheshrijal.com/
 
