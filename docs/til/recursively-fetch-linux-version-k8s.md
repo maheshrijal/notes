@@ -1,16 +1,11 @@
----
-title: Fetch linux version recrusively in kubernetes
-date: 2024-01-25
----
+# Redirecting...
 
+<script>
+  const target = new URL('https://maheshrijal.com/til/fetch-linux-version-k8s-pod');
+  target.search = window.location.search;
+  target.hash = window.location.hash;
+  window.location.replace(target.toString());
+</script>
+<meta http-equiv="refresh" content="0; url=https://maheshrijal.com/til/fetch-linux-version-k8s-pod">
 
-Set the namespace in current context
-```
-kubectl config set-context --current --namespace=<namespace>
-```
-
-Get the OS
-
-```
-kubectl get po -o custom-columns="POD:.metadata.name" | tail -n +2 | xargs -I {} kubectl exec {} -- sh -c 'echo "Pod - $(hostname): $(cat /etc/os-release | grep PRETTY_NAME)"'
-```
+If you are not redirected automatically, open [https://maheshrijal.com/til/fetch-linux-version-k8s-pod](https://maheshrijal.com/til/fetch-linux-version-k8s-pod).

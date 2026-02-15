@@ -1,17 +1,11 @@
----
-title: Recursivley copy files to & from docker container
-date: 2023-08-23
----
+# Redirecting...
 
+<script>
+  const target = new URL('https://maheshrijal.com/til/recursive-copy-docker');
+  target.search = window.location.search;
+  target.hash = window.location.hash;
+  window.location.replace(target.toString());
+</script>
+<meta http-equiv="refresh" content="0; url=https://maheshrijal.com/til/recursive-copy-docker">
 
-## Copy from Host to Docker
-
-```
-docker cp src/. container_id:/target
-```
-
-## Copy from Docker to Host
-
-```
-docker cp container_id:/src/. target
-```
+If you are not redirected automatically, open [https://maheshrijal.com/til/recursive-copy-docker](https://maheshrijal.com/til/recursive-copy-docker).
